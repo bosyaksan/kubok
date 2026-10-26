@@ -343,6 +343,20 @@ td.tm .tname { gap: 8px; }
 .m-head .when.live::before { content: "🔴 "; }
 .pr-teams { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
 .rule .ico { font-size: 18px; text-align: center; }
+
+/* ===== Скелетоны: серые заготовки, пока грузятся данные ===== */
+.sk { display: inline-block; background: var(--surface-2); border-radius: 8px; position: relative; overflow: hidden; vertical-align: middle; }
+.sk::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--surface) 70%, transparent), transparent);
+  animation: sk-shine 1.3s ease-in-out infinite; }
+@keyframes sk-shine { 100% { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) { .sk::after { animation: none; } }
+.sk-line { height: 12px; }
+.sk-round { border-radius: 50%; }
+.sk-list { display: flex; flex-direction: column; gap: 10px; }
+.m.skel .m-row { align-items: center; }
+.m.skel .team { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+td .sk-line { height: 10px; }
 </style>
 </head>
 <body>
@@ -375,7 +389,7 @@ td.tm .tname { gap: 8px; }
       <p class="progress" id="progress"></p>
       <button type="button" class="pill" id="onlyEmpty" aria-pressed="false" hidden>✏️ Без прогноза</button>
     </div>
-    <div id="matchList"><div class="empty"><strong>Загружаю матчи…</strong>Расписание и прогнозы друзей появятся через секунду.</div></div>
+    <div id="matchList"><div class="sk-list" role="status" aria-label="Загружаю матчи"><h3 class="day"><span class="sk sk-line" style="width:110px"></span></h3><div class="m skel" aria-hidden="true"><div class="m-head"><span class="sk sk-line" style="width:96px"></span><span class="sk sk-line" style="width:52px"></span></div><div class="m-row"><span class="team"><span class="sk sk-round" style="width:38px;height:38px"></span><span class="sk sk-line" style="width:72px"></span></span><div class="score"><span class="sk" style="width:44px;height:48px;border-radius:10px"></span><span class="colon">:</span><span class="sk" style="width:44px;height:48px;border-radius:10px"></span></div><span class="team"><span class="sk sk-round" style="width:38px;height:38px"></span><span class="sk sk-line" style="width:72px"></span></span></div><span class="sk sk-line" style="width:62%"></span></div><div class="m skel" aria-hidden="true"><div class="m-head"><span class="sk sk-line" style="width:96px"></span><span class="sk sk-line" style="width:52px"></span></div><div class="m-row"><span class="team"><span class="sk sk-round" style="width:38px;height:38px"></span><span class="sk sk-line" style="width:72px"></span></span><div class="score"><span class="sk" style="width:44px;height:48px;border-radius:10px"></span><span class="colon">:</span><span class="sk" style="width:44px;height:48px;border-radius:10px"></span></div><span class="team"><span class="sk sk-round" style="width:38px;height:38px"></span><span class="sk sk-line" style="width:72px"></span></span></div><span class="sk sk-line" style="width:62%"></span></div><div class="m skel" aria-hidden="true"><div class="m-head"><span class="sk sk-line" style="width:96px"></span><span class="sk sk-line" style="width:52px"></span></div><div class="m-row"><span class="team"><span class="sk sk-round" style="width:38px;height:38px"></span><span class="sk sk-line" style="width:72px"></span></span><div class="score"><span class="sk" style="width:44px;height:48px;border-radius:10px"></span><span class="colon">:</span><span class="sk" style="width:44px;height:48px;border-radius:10px"></span></div><span class="team"><span class="sk sk-round" style="width:38px;height:38px"></span><span class="sk sk-line" style="width:72px"></span></span></div><span class="sk sk-line" style="width:62%"></span></div></div></div>
   </section>
 
   <!-- СЕЗОН -->
@@ -768,6 +782,58 @@ function avatar(nick) {
   return '<span class="av" style="background:hsl(' + h + ' 45% 42%)" aria-hidden="true">' + esc((nick.trim()[0] || '?').toUpperCase()) + '</span>';
 }
 
+/* ===== Скелетоны ===== */
+// Серые заготовки той же формы, что настоящие карточки, пока данные загружаются.
+const SK = {
+  line(w, h) { return '<span class="sk sk-line" style="width:' + w + (h ? ';height:' + h + 'px' : '') + '"></span>'; },
+  circle(d) { return '<span class="sk sk-round" style="width:' + d + 'px;height:' + d + 'px"></span>'; },
+  box(w, h, r) { return '<span class="sk" style="width:' + w + ';height:' + h + 'px;border-radius:' + (r || 10) + 'px"></span>'; },
+  match() {
+    return '<div class="m skel" aria-hidden="true"><div class="m-head">' + SK.line('96px') + SK.line('52px') + '</div>' +
+      '<div class="m-row"><span class="team">' + SK.circle(38) + SK.line('72px') + '</span>' +
+      '<div class="score">' + SK.box('44px', 48) + '<span class="colon">:</span>' + SK.box('44px', 48) + '</div>' +
+      '<span class="team">' + SK.circle(38) + SK.line('72px') + '</span></div>' + SK.line('62%') + '</div>';
+  },
+  matches(n) {
+    return '<div class="sk-list" role="status" aria-label="Загружаю матчи"><h3 class="day">' + SK.line('110px') + '</h3>' +
+      Array.from({ length: n }, SK.match).join('') + '</div>';
+  },
+  table(n) {
+    let rows = '';
+    for (let i = 0; i < n; i++) rows += '<tr><td class="rk">' + SK.line('14px') + '</td><td class="tm"><span class="tname">' + SK.circle(20) + SK.line((90 + (i * 37) % 70) + 'px') + '</span></td>' +
+      '<td>' + SK.line('12px') + '</td><td>' + SK.line('12px') + '</td><td>' + SK.line('12px') + '</td><td>' + SK.line('12px') + '</td><td>' + SK.line('16px') + '</td></tr>';
+    return '<div class="tbl-wrap" role="status" aria-label="Загружаю таблицу"><table><tbody>' + rows + '</tbody></table></div>';
+  },
+  board(n) {
+    let rows = '';
+    for (let i = 0; i < n; i++) rows += '<div class="row" aria-hidden="true"><span class="rk">' + SK.line('14px') + '</span>' + SK.circle(34) +
+      '<span class="nm">' + SK.line((80 + i * 23) + 'px', 14) + '<br>' + SK.line('110px', 10) + '</span>' + SK.box('28px', 22, 6) + '</div>';
+    return '<div class="board" role="status" aria-label="Загружаю рейтинг">' + rows + '</div>';
+  },
+  season(n) {
+    return '<div class="sk-list" role="status" aria-label="Загружаю">' + Array.from({ length: n }, () =>
+      '<div class="lq" aria-hidden="true"><div class="lq-head">' + SK.line('60%', 16) + SK.box('36px', 22, 6) + '</div>' +
+      SK.line('45%') + SK.box('100%', 44) + '</div>').join('') + '</div>';
+  },
+  stats() {
+    return '<div class="stat-grid" role="status" aria-label="Считаю статистику">' + Array.from({ length: 6 }, () =>
+      '<div class="stat">' + SK.line('48px', 22) + SK.line('80%', 10) + '</div>').join('') + '</div>' +
+      '<h3 class="sec">' + SK.line('120px', 10) + '</h3>' + SK.box('100%', 110, 12);
+  },
+  prows(n) {
+    return '<div class="plist" role="status" aria-label="Загружаю прогнозы">' + Array.from({ length: n }, () =>
+      '<div class="pr" aria-hidden="true"><div class="pr-meta">' + SK.line('120px', 10) + '</div>' +
+      '<div class="pr-main"><span class="pr-teams">' + SK.circle(20) + SK.line('70px') + SK.circle(20) + SK.line('70px') + '</span>' +
+      SK.line('60px') + SK.box('34px', 22, 6) + '</div></div>').join('') + '</div>';
+  },
+  profile() {
+    return '<div class="pf-head" role="status" aria-label="Загружаю профиль">' + SK.circle(52) +
+      '<div>' + SK.line('110px', 18) + '<br>' + SK.line('150px', 11) + '</div>' + SK.box('46px', 60, 6) + '</div>' +
+      '<div class="pf-nums">' + Array.from({ length: 3 }, () => '<div>' + SK.line('32px', 18) + '<br>' + SK.line('70%', 9) + '</div>').join('') + '</div>' +
+      SK.prows(3);
+  }
+};
+
 /* ===== Логотипы команд ===== */
 function phLogo(n, cls) {
   let h = 0; for (const ch of n) h = (h * 31 + ch.codePointAt(0)) % 360;
@@ -913,7 +979,8 @@ function renderHeader() {
   if (!logged) return;
   const rows = rank(S.board), mine = rows.find(r => r.player_id === S.me.id);
   $('#meNick').textContent = S.me.nick;
-  $('#mePts').textContent = mine ? mine.pts : 0;
+  // пока очки не загрузились, вместо нуля показываем многоточие
+  $('#mePts').textContent = !S.loaded ? '…' : mine ? mine.pts : 0;
   $('#meRank').textContent = mine && rows.length > 1 ? mine.rank + '-е место из ' + rows.length : 'очков';
 }
 
@@ -991,6 +1058,7 @@ function renderMatches(force) {
   }
   if (!S.loaded) {
     if (S.loadError) list.innerHTML = '<div class="empty"><strong>Не удалось загрузить матчи</strong>' + esc(S.loadError) + '<br><button type="button" class="btn" data-act="retry">Повторить</button></div>';
+    else if (!list.querySelector('.skel')) list.innerHTML = SK.matches(3);
     return;
   }
   const arr = visibleMatches(now);
@@ -1178,7 +1246,7 @@ function localInput(iso) {
 function renderSeason() {
   const box = $('#longList');
   if (!API.ready) { box.innerHTML = '<div class="empty"><strong>Сайт ещё не подключён к базе</strong></div>'; return; }
-  if (!S.loaded) { box.innerHTML = '<div class="empty"><strong>Загружаю…</strong></div>'; return; }
+  if (!S.loaded) { box.innerHTML = SK.season(2); return; }
   if (!S.longQ.length) { box.innerHTML = '<div class="empty"><strong>Вопросов на сезон пока нет</strong>Запусти новую версию скрипта базы.</div>'; return; }
   const now = Date.now(), admin = S.me && S.me.is_admin;
   box.innerHTML = S.longQ.map(q => {
@@ -1258,7 +1326,7 @@ function renderTables() {
     '<button type="button" class="chip" data-tcomp="' + k + '" aria-pressed="' + (S.tcomp === k) + '"><span class="emo" aria-hidden="true">' + COMPS[k].e + '</span>' + esc(COMPS[k].name) + '</button>').join('');
   const body = $('#tblBody');
   if (!API.ready) { body.innerHTML = '<div class="empty"><strong>Сайт ещё не подключён к базе</strong></div>'; return; }
-  if (!S.loaded) { body.innerHTML = '<div class="empty"><strong>Загружаю таблицу…</strong></div>'; return; }
+  if (!S.loaded) { body.innerHTML = SK.table(10); return; }
   const st = S.standings[S.tcomp];
   if (!st || !Array.isArray(st.rows) || !st.rows.length) {
     body.innerHTML = '<div class="empty"><strong>Таблицы пока нет</strong>Она появится после ближайшего автообновления.</div>'; return;
@@ -1314,12 +1382,12 @@ function renderRating() {
     const log = $('#syncLog'); log.hidden = !s.log; log.textContent = s.log || '';
   }
   if (!API.ready) { box.innerHTML = '<div class="empty"><strong>Сайт ещё не подключён к базе</strong></div>'; return; }
-  if (!S.loaded) { box.innerHTML = '<div class="empty"><strong>Загружаю рейтинг…</strong></div>'; return; }
+  if (!S.loaded) { box.innerHTML = SK.board(4); return; }
   let rows;
   if (S.rView === 'season') rows = S.board;
   else {
     if (S.periodErr) { box.innerHTML = '<div class="empty"><strong>Не удалось загрузить рейтинг</strong>' + esc(S.periodErr) + '</div>'; return; }
-    if (!S.periodBoard) { box.innerHTML = '<div class="empty"><strong>Загружаю рейтинг…</strong></div>'; return; }
+    if (!S.periodBoard) { box.innerHTML = SK.board(Math.max(2, Math.min(S.board.length || 4, 8))); return; }
     rows = S.periodBoard;
   }
   rows = rank(rows);
@@ -1348,7 +1416,7 @@ function renderRating() {
 /* ===== Статистика игрока ===== */
 async function openStats(id, nick) {
   $('#statsTitle').textContent = nick;
-  $('#statsBody').innerHTML = '<div class="empty"><strong>Считаю статистику…</strong></div>';
+  $('#statsBody').innerHTML = SK.stats();
   $('#statsSheet').hidden = false;
   try {
     const h = await API.rpc('player_history2', { p_player: id }).catch(() => API.rpc('player_history', { p_player: id }));
@@ -1427,6 +1495,7 @@ function renderProfile(force) {
     return;
   }
   $('#accNick').textContent = S.me.nick;
+  if (!S.loaded) { box.innerHTML = SK.profile(); return; }
   // пока человек вводит счёт, список не перерисовываем — только обновляем поля
   const a = document.activeElement;
   if (!force && a && a.tagName === 'INPUT' && box.contains(a)) { S.pendingProfile = true; updateProfileRows(); return; }
@@ -1448,8 +1517,8 @@ function renderProfile(force) {
     (S.me.is_admin ? ' · 🛠️ админ' : '') + '</span></div>' +
     '<span class="ycard big" aria-label="Очки в сезоне">' + (mine ? mine.pts : 0) + '</span></div>' +
     '<div class="pf-nums">' +
-      '<div><b>' + (S.myHist ? wPts : '…') + '</b><span>📅 за неделю</span></div>' +
-      '<div><b>' + (S.myHist ? mPts : '…') + '</b><span>🗓️ за месяц</span></div>' +
+      '<div><b>' + (S.myHist ? wPts : SK.line('28px', 18)) + '</b><span>📅 за неделю</span></div>' +
+      '<div><b>' + (S.myHist ? mPts : SK.line('28px', 18)) + '</b><span>🗓️ за месяц</span></div>' +
       '<div><b>' + (mine ? mine.total : 0) + '</b><span>📝 прогнозов</span></div>' +
     '</div>';
 
@@ -1491,11 +1560,11 @@ function renderProfile(force) {
         '<span class="pts p' + Math.min(3, base) + '">' + (base === 3 ? '🎯 ' : '') + '+' + r.pts + '</span></div></div>';
     }).join('') + '</div><p class="small">Слева твой прогноз, справа итоговый счёт.</p>'
       : (S.myHist ? '<div class="empty"><strong>Сыгранных прогнозов пока нет</strong>Они появятся после первых завершённых матчей.</div>'
-                  : '<div class="empty"><strong>Загружаю…</strong></div>');
+                  : SK.prows(3));
   }
 
   html += '<h3 class="sec">📊 Статистика</h3>' +
-    (S.myHist ? statsHTML(S.me.id, S.myHist, false) : '<div class="empty"><strong>Считаю статистику…</strong></div>');
+    (S.myHist ? statsHTML(S.me.id, S.myHist, false) : SK.stats());
   box.innerHTML = html;
   updateProfileRows();
 }
