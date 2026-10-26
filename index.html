@@ -288,6 +288,32 @@ button.row.me { background: color-mix(in srgb, var(--yellow) 14%, var(--surface)
 .answers .fp.hit { background: color-mix(in srgb, var(--win) 25%, var(--surface)); }
 .lq .adm { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .lq .adm .full { grid-column: 1 / -1; }
+
+/* ===== Профиль ===== */
+.pf-head { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+.pf-head .av { width: 52px; height: 52px; font-size: 22px; }
+.pf-head b { display: block; font-size: 18px; overflow-wrap: anywhere; }
+.pf-head .sub { font-size: 13px; color: var(--muted); }
+.ycard.big { width: 46px; height: 60px; font-size: 17px; }
+.pf-nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.pf-nums div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 8px 6px; text-align: center; }
+.pf-nums b { display: block; font-family: var(--f-display); font-weight: 700; font-size: 18px; font-variant-numeric: tabular-nums; }
+.pf-nums span { font-size: 11px; color: var(--muted); }
+button.banner { width: 100%; text-align: left; cursor: pointer; font: inherit; color: inherit; }
+button.banner b { color: var(--brand); flex-shrink: 0; }
+.plist { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.pr { padding: 10px 12px; border-bottom: 1px solid var(--line); display: grid; gap: 6px; }
+.pr:last-child { border-bottom: 0; }
+.pr.is-joker { background: color-mix(in srgb, var(--yellow) 12%, var(--surface)); }
+.pr-meta { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.pr-main { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: center; }
+.pr-teams { font-weight: 600; font-size: 14px; line-height: 1.3; min-width: 0; overflow-wrap: anywhere; }
+.pr-score { display: flex; align-items: center; gap: 4px; }
+.g.sm { width: 36px; height: 38px; font-size: 16px; border-radius: 8px; }
+.jk.sm { padding: 7px 8px; font-size: 12px; min-width: 38px; }
+.pr-res { font-size: 13px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pr-res b { color: var(--ink); }
+.pr .warn { color: var(--amber); }
 </style>
 </head>
 <body>
@@ -296,7 +322,7 @@ button.row.me { background: color-mix(in srgb, var(--yellow) 14%, var(--surface)
   <div class="wrap">
     <div class="brand"><b>Кубок прогнозов</b><span>ЛЧ · АПЛ · РПЛ · Ла Лига</span></div>
     <button type="button" class="login-btn" id="loginBtn">Войти</button>
-    <button type="button" class="me" id="meBtn" hidden aria-label="Моя статистика">
+    <button type="button" class="me" id="meBtn" hidden aria-label="Мой профиль">
       <span class="me-meta"><strong id="meNick"></strong><span id="meRank"></span></span>
       <span class="ycard" id="mePts">0</span>
     </button>
@@ -360,11 +386,6 @@ button.row.me { background: color-mix(in srgb, var(--yellow) 14%, var(--surface)
       <div class="rule"><span class="x2">×2</span><span>Джокер: раз в неделю (пн–вс) удваивает очки за один матч</span></div>
       <p>Пример: прогноз 2:1, матч закончился 3:2 — разница та же, 2 очка, а с джокером 4. Прогноз закрывается в момент начала матча. Прогнозы друзей видны после стартового свистка. Очки за прогнозы на сезон идут только в общий рейтинг.</p>
     </div>
-    <div class="panel" id="accountPanel" hidden>
-      <div class="account"><span>Ты вошёл как <b id="accNick"></b></span><button type="button" class="btn" id="logoutBtn">Выйти</button></div>
-      <p>Чтобы позвать друзей, просто отправь им ссылку на этот сайт. Они зарегистрируются по нику и паролю.</p>
-      <button type="button" class="btn" id="copyLink">Скопировать ссылку</button>
-    </div>
     <!-- Админка: видна только администратору -->
     <div class="panel" id="adminPanel" hidden>
       <h3>Управление</h3>
@@ -384,6 +405,17 @@ button.row.me { background: color-mix(in srgb, var(--yellow) 14%, var(--surface)
         <button type="submit" class="btn primary big full" id="addBtn">Добавить матч</button>
       </form>
       <p>Счёт сыгранного матча вносится на вкладке «Матчи» → «Сыгранные», кнопка «Внести счёт». Ответы на сезон и дату окончания приёма — на вкладке «Сезон».</p>
+    </div>
+  </section>
+
+  <!-- ПРОФИЛЬ (открывается по нажатию на свой ник в шапке) -->
+  <section class="view" id="v-profile" aria-labelledby="t-profile" hidden>
+    <h2 class="view-title" id="t-profile">Профиль</h2>
+    <div id="profileBody" class="view"></div>
+    <div class="panel" id="accountPanel" hidden>
+      <div class="account"><span>Ты вошёл как <b id="accNick"></b></span><button type="button" class="btn" id="logoutBtn">Выйти</button></div>
+      <p>Чтобы позвать друзей, просто отправь им ссылку на этот сайт. Они зарегистрируются по нику и паролю.</p>
+      <button type="button" class="btn" id="copyLink">Скопировать ссылку</button>
     </div>
   </section>
 
@@ -599,6 +631,7 @@ const TZ_COUNTRY = {
 const S = {
   view: 'matches', comp: 'all', seg: 'up', tcomp: 'ucl', country: 'other', onlyEmpty: false,
   rView: 'week', rOff: 0, periodBoard: null, periodErr: '',
+  pSeg: 'up', myHist: null, pendingProfile: false,
   token: null, me: null,
   matches: new Map(), standings: {}, rplResults: [], board: [], recent: [], counts: {}, my: {}, myJ: {},
   longQ: [], myLong: {}, allLong: [],
@@ -712,7 +745,7 @@ async function loadAll() {
   loading = true;
   try {
     const since = new Date(Date.now() - 14 * 864e5).toISOString();
-    const [m, board, recent, counts, st, mine, sync, lq, lp, myl] = await Promise.all([
+    const [m, board, recent, counts, st, mine, sync, lq, lp, myl, hist] = await Promise.all([
       API.get('matches?select=id,comp,round,kickoff,home,away,hg,ag,status,source&kickoff=gte.' + encodeURIComponent(since) + '&order=kickoff.asc&limit=1000'),
       API.rpc('leaderboard'),
       API.rpc('recent_picks', { p_days: 14 }),
@@ -723,7 +756,9 @@ async function loadAll() {
       // сезонные прогнозы — необязательная часть: если что-то не так, матчи всё равно загрузятся
       API.get('long_questions?select=id,title,comp,deadline,points,answer,sort&order=sort.asc').catch(() => null),
       API.get('long_picks?select=player_id,question_id,answer&limit=1000').catch(() => null),
-      S.token ? API.rpc('my_long_picks', { p_token: S.token }).catch(() => null) : Promise.resolve(null)
+      S.token ? API.rpc('my_long_picks', { p_token: S.token }).catch(() => null) : Promise.resolve(null),
+      // история своих прогнозов нужна только на странице профиля
+      S.me && S.view === 'profile' ? API.rpc('player_history', { p_player: S.me.id }).catch(() => null) : Promise.resolve(null)
     ]);
     S.matches = new Map((m || []).map(x => [x.id, x]));
     S.board = board || [];
@@ -738,6 +773,7 @@ async function loadAll() {
     S.sync = sync;
     S.longQ = lq || []; S.allLong = lp || [];
     S.myLong = {}; for (const x of myl || []) S.myLong[x.question_id] = x.answer;
+    if (hist) S.myHist = hist;
     const rpl = S.standings.rpl;
     S.rplResults = rpl && rpl.base_until
       ? await API.get('matches?select=home,away,hg,ag&comp=eq.rpl&status=eq.finished&kickoff=gte.' + encodeURIComponent(rpl.base_until) + '&limit=1000')
@@ -803,7 +839,7 @@ async function submitAuth(e) {
 }
 async function logout() {
   const t = S.token;
-  S.token = null; S.me = null; S.my = {}; S.myJ = {}; S.myLong = {}; store.set('token', null);
+  S.token = null; S.me = null; S.my = {}; S.myJ = {}; S.myLong = {}; S.myHist = null; store.set('token', null);
   S.listSig = ''; refresh();
   toast('Ты вышел из аккаунта');
   try { if (t) await API.rpc('logout', { p_token: t }); } catch (e) {}
@@ -995,7 +1031,7 @@ function updateCards(now) {
 function onPickInput(e) {
   const inp = e.target; if (!inp.matches('.g[data-side]')) return;
   const v = inp.value.replace(/\D/g, '').slice(0, 2); if (v !== inp.value) inp.value = v;
-  const card = inp.closest('.m'), id = card.dataset.id;
+  const card = inp.closest('[data-id]'), id = card.dataset.id;
   const ih = card.querySelector('[data-side=h]'), ia = card.querySelector('[data-side=a]');
   const m = S.matches.get(id); if (!m || phase(m, Date.now()) !== 'up') return;
   if (inp === ih && v.length === 1 && ia.value === '') ia.focus();
@@ -1003,7 +1039,7 @@ function onPickInput(e) {
   if (h !== '' && a !== '') { S.my[id] = [parseInt(h, 10), parseInt(a, 10)]; S.partial.delete(id); scheduleSave(id); }
   else if (h === '' && a === '') { delete S.my[id]; delete S.myJ[id]; S.partial.delete(id); scheduleSave(id); }
   else S.partial.add(id);
-  updateCards(); renderProgress(Date.now());
+  updateCards(); renderProgress(Date.now()); updateProfileRows();
 }
 function scheduleSave(id) {
   clearTimeout(S.saveT[id]);
@@ -1029,7 +1065,7 @@ async function savePick(id) {
 async function onMatchClick(e) {
   const b = e.target.closest('[data-act]'); if (!b) return;
   if (b.dataset.act === 'retry') { loadAll(); return; }
-  const card = b.closest('.m'); if (!card) return;
+  const card = b.closest('[data-id]'); if (!card) return;
   const id = card.dataset.id;
   if (b.dataset.act === 'joker') {
     b.disabled = true;
@@ -1044,7 +1080,7 @@ async function onMatchClick(e) {
         S.myJ[id] = true;
         toast('Джокер поставлен: очки за этот матч ×2');
       } else { delete S.myJ[id]; toast('Джокер снят'); }
-      updateCards();
+      updateCards(); updateProfileRows();
     } catch (err) { toast(err.message); sessionExpired(err.message); }
     finally { b.disabled = false; }
     return;
@@ -1261,12 +1297,11 @@ async function openStats(id, nick) {
     $('#statsBody').innerHTML = '<div class="empty"><strong>Не удалось загрузить</strong>' + esc(e.message) + '</div>';
   }
 }
-function renderStats(id, h) {
-  const body = $('#statsBody');
+function renderStats(id, h) { $('#statsBody').innerHTML = statsHTML(id, h, true); }
+function statsHTML(id, h, withLast) {
   const brd = rank(S.board).find(r => r.player_id === id);
   if (!h.length) {
-    body.innerHTML = '<div class="empty"><strong>Пока нечего считать</strong>Статистика появится после первых сыгранных матчей с прогнозами.</div>';
-    return;
+    return '<div class="empty"><strong>Пока нечего считать</strong>Статистика появится после первых сыгранных матчей с прогнозами.</div>';
   }
   const base = (r) => r.joker ? r.pts / 2 : r.pts;
   const played = h.length, pts = h.reduce((s, r) => s + r.pts, 0);
@@ -1298,10 +1333,10 @@ function renderStats(id, h) {
   });
   svg += '</svg>';
   const last = h.slice(0, 10);
-  body.innerHTML =
-    '<div class="stat-grid">' +
-      '<div class="stat"><b>' + (brd ? brd.pts : pts) + '</b><span>очков в сезоне' + (brd && brd.long_pts ? ', из них ' + brd.long_pts + ' за сезонные' : '') + '</span></div>' +
-      '<div class="stat"><b>' + (brd ? brd.rank : '—') + '</b><span>место в общем рейтинге</span></div>' +
+  return '<div class="stat-grid">' +
+      // очки и место в профиле уже показаны в шапке, поэтому там эти две карточки не нужны
+      (withLast ? '<div class="stat"><b>' + (brd ? brd.pts : pts) + '</b><span>очков в сезоне' + (brd && brd.long_pts ? ', из них ' + brd.long_pts + ' за сезонные' : '') + '</span></div>' +
+      '<div class="stat"><b>' + (brd ? brd.rank : '—') + '</b><span>место в общем рейтинге</span></div>' : '') +
       '<div class="stat"><b>' + pct(outcome) + '</b><span>угадан исход (' + outcome + ' из ' + played + ')</span></div>' +
       '<div class="stat"><b>' + exact + '</b><span>точных счетов (' + pct(exact) + ')</span></div>' +
       '<div class="stat"><b>' + pct(diff) + '</b><span>угадана разница мячей</span></div>' +
@@ -1312,11 +1347,111 @@ function renderStats(id, h) {
     '<h3 class="sec">Очки по неделям</h3>' + svg +
     '<h3 class="sec">По турнирам</h3><div>' + ORDER.filter(c => byComp[c]).map(c =>
       '<div class="comp-line"><span><i class="dot ' + c + '"></i>' + esc(COMPS[c].name) + '</span><span>' + byComp[c].pts + ' ' + plural(byComp[c].pts, 'очко', 'очка', 'очков') + ' за ' + byComp[c].n + ' ' + plural(byComp[c].n, 'матч', 'матча', 'матчей') + '</span></div>').join('') + '</div>' +
-    '<h3 class="sec">Последние матчи</h3><div class="hist">' + last.map(r =>
+    (withLast ? '<h3 class="sec">Последние матчи</h3><div class="hist">' + last.map(r =>
       '<div><span class="mt">' + esc(ru(r.home)) + ' — ' + esc(ru(r.away)) + '<small>' + esc(fShort.format(new Date(r.kickoff))) + ' · ' + esc(COMPS[r.comp] ? COMPS[r.comp].short : r.comp) + '</small></span>' +
       '<span class="sc">' + r.phg + ':' + r.pag + ' / ' + r.hg + ':' + r.ag + (r.joker ? ' <span class="x2">×2</span>' : '') + '</span>' +
       '<span class="pts p' + Math.min(3, base(r)) + '">+' + r.pts + '</span></div>').join('') + '</div>' +
-    '<p class="small">В списке: прогноз / итоговый счёт.</p>';
+    '<p class="small">В списке: прогноз / итоговый счёт.</p>' : '');
+}
+
+/* ===== Профиль ===== */
+function profileRowMeta(m) {
+  const c = COMPS[m.comp] || { short: m.comp }, d = new Date(m.kickoff);
+  return '<i class="dot ' + esc(m.comp) + '"></i>' + esc(c.short) + ' · ' + esc(fShort.format(d)) + ', ' + esc(fTime.format(d));
+}
+function renderProfile(force) {
+  const box = $('#profileBody');
+  $('#accountPanel').hidden = !S.me;
+  if (!S.me) {
+    box.innerHTML = '<div class="empty"><strong>Войди, чтобы открыть профиль</strong>Здесь будут твои очки, место в рейтинге и все прогнозы.<br><button type="button" class="btn primary" data-open-auth>Войти</button></div>';
+    return;
+  }
+  $('#accNick').textContent = S.me.nick;
+  // пока человек вводит счёт, список не перерисовываем — только обновляем поля
+  const a = document.activeElement;
+  if (!force && a && a.tagName === 'INPUT' && box.contains(a)) { S.pendingProfile = true; updateProfileRows(); return; }
+  S.pendingProfile = false;
+  const now = Date.now(), all = [...S.matches.values()];
+  const rows = rank(S.board), mine = rows.find(r => r.player_id === S.me.id);
+  const hist = S.myHist || [];
+  const nowD = new Date(), wk = weekStartUTC(nowD).getTime(), mStart = Date.UTC(nowD.getUTCFullYear(), nowD.getUTCMonth(), 1);
+  const wPts = hist.filter(r => Date.parse(r.kickoff) >= wk).reduce((x, r) => x + r.pts, 0);
+  const mPts = hist.filter(r => Date.parse(r.kickoff) >= mStart).reduce((x, r) => x + r.pts, 0);
+  const up = all.filter(m => phase(m, now) === 'up' && validPick(S.my[m.id])).sort((x, y) => Date.parse(x.kickoff) - Date.parse(y.kickoff));
+  const noPick = all.filter(m => phase(m, now) === 'up' && !validPick(S.my[m.id])).length;
+  const live = all.filter(m => { const ph = phase(m, now); return ph !== 'up' && ph !== 'ft' && validPick(S.my[m.id]); })
+    .sort((x, y) => Date.parse(y.kickoff) - Date.parse(x.kickoff));
+
+  let html = '<div class="pf-head">' + avatar(S.me.nick) +
+    '<div><b>' + esc(S.me.nick) + '</b><span class="sub">' +
+    (mine && rows.length > 1 ? mine.rank + '-е место из ' + rows.length + ' в общем рейтинге' : 'Общий рейтинг') +
+    (S.me.is_admin ? ' · администратор' : '') + '</span></div>' +
+    '<span class="ycard big" aria-label="Очки в сезоне">' + (mine ? mine.pts : 0) + '</span></div>' +
+    '<div class="pf-nums">' +
+      '<div><b>' + (S.myHist ? wPts : '…') + '</b><span>очков за неделю</span></div>' +
+      '<div><b>' + (S.myHist ? mPts : '…') + '</b><span>очков за месяц</span></div>' +
+      '<div><b>' + (mine ? mine.total : 0) + '</b><span>прогнозов</span></div>' +
+    '</div>';
+
+  html += '<h3 class="sec">Мои прогнозы</h3>' +
+    '<div class="seg" role="group" aria-label="Какие прогнозы показать">' +
+    '<button type="button" data-pseg="up" aria-pressed="' + (S.pSeg === 'up') + '">Предстоящие (' + up.length + ')</button>' +
+    '<button type="button" data-pseg="done" aria-pressed="' + (S.pSeg === 'done') + '">Сыгранные (' + (live.length + hist.length) + ')</button></div>';
+
+  if (S.pSeg === 'up') {
+    if (noPick) html += '<button type="button" class="banner" data-go-empty><span>Без прогноза ещё ' + noPick + ' ' + plural(noPick, 'матч', 'матча', 'матчей') + '</span><b>Сделать →</b></button>';
+    html += up.length ? '<div class="plist">' + up.map(m =>
+      '<div class="pr" data-id="' + esc(m.id) + '" data-up="1">' +
+        '<div class="pr-meta">' + profileRowMeta(m) + ' <span class="x2" data-x2 hidden>×2</span><span class="warn" data-warn hidden>укажи оба числа</span></div>' +
+        '<div class="pr-main"><span class="pr-teams">' + esc(ru(m.home)) + ' — ' + esc(ru(m.away)) + '</span>' +
+          '<span class="pr-score">' +
+            '<input id="pp-' + esc(m.id) + '-h" class="g sm" data-side="h" inputmode="numeric" pattern="[0-9]*" maxlength="2" autocomplete="off" aria-label="Голы: ' + esc(ru(m.home)) + '">' +
+            '<span class="colon" aria-hidden="true">:</span>' +
+            '<input id="pp-' + esc(m.id) + '-a" class="g sm" data-side="a" inputmode="numeric" pattern="[0-9]*" maxlength="2" autocomplete="off" aria-label="Голы: ' + esc(ru(m.away)) + '">' +
+          '</span>' +
+          '<button type="button" class="jk sm" data-act="joker" aria-pressed="false" aria-label="Джокер: очки за матч ×2">×2</button>' +
+        '</div>' +
+      '</div>').join('') + '</div>' +
+      '<p class="small">Счёт можно менять до начала матча, изменения сохраняются сами. Кнопка ×2 ставит джокер (один на неделю).</p>'
+      : '<div class="empty"><strong>Нет предстоящих прогнозов</strong>Сделай прогноз на вкладке «Матчи».</div>';
+  } else {
+    const items = live.map(m => ({ m })).concat(hist.slice(0, 40).map(r => ({ r })));
+    html += items.length ? '<div class="plist">' + items.map(it => {
+      if (it.m) {
+        const m = it.m, p = S.my[m.id], j = !!S.myJ[m.id], ph = phase(m, now), b = basePts(p, m.hg, m.ag);
+        return '<div class="pr' + (j ? ' is-joker' : '') + '"><div class="pr-meta">' + profileRowMeta(m) + (j ? ' <span class="x2">×2</span>' : '') + '</div>' +
+          '<div class="pr-main"><span class="pr-teams">' + esc(ru(m.home)) + ' — ' + esc(ru(m.away)) + '</span>' +
+          '<span class="pr-res">' + p[0] + ':' + p[1] + ' / <b>' + (m.hg != null ? m.hg + ':' + m.ag : '–:–') + '</b></span>' +
+          '<span class="pts">' + (ph === 'live' ? (b !== null ? 'сейчас +' + b * (j ? 2 : 1) : 'идёт') : ph === 'pp' ? 'перенесён' : 'ждём счёт') + '</span></div></div>';
+      }
+      const r = it.r, base = r.joker ? r.pts / 2 : r.pts;
+      return '<div class="pr' + (r.joker ? ' is-joker' : '') + '"><div class="pr-meta"><i class="dot ' + esc(r.comp) + '"></i>' +
+        esc(COMPS[r.comp] ? COMPS[r.comp].short : r.comp) + ' · ' + esc(fShort.format(new Date(r.kickoff))) + (r.joker ? ' <span class="x2">×2</span>' : '') + '</div>' +
+        '<div class="pr-main"><span class="pr-teams">' + esc(ru(r.home)) + ' — ' + esc(ru(r.away)) + '</span>' +
+        '<span class="pr-res">' + r.phg + ':' + r.pag + ' / <b>' + r.hg + ':' + r.ag + '</b></span>' +
+        '<span class="pts p' + Math.min(3, base) + '">+' + r.pts + '</span></div></div>';
+    }).join('') + '</div><p class="small">Слева твой прогноз, справа итоговый счёт.</p>'
+      : (S.myHist ? '<div class="empty"><strong>Сыгранных прогнозов пока нет</strong>Они появятся после первых завершённых матчей.</div>'
+                  : '<div class="empty"><strong>Загружаю…</strong></div>');
+  }
+
+  html += '<h3 class="sec">Статистика</h3>' +
+    (S.myHist ? statsHTML(S.me.id, S.myHist, false) : '<div class="empty"><strong>Считаю статистику…</strong></div>');
+  box.innerHTML = html;
+  updateProfileRows();
+}
+// Обновить поля счёта и джокер в списке профиля, не перерисовывая его
+function updateProfileRows() {
+  const act = document.activeElement;
+  for (const el of document.querySelectorAll('#profileBody .pr[data-up]')) {
+    const id = el.dataset.id, pick = S.my[id], ok = validPick(pick), j = ok && !!S.myJ[id];
+    const ih = el.querySelector('[data-side=h]'), ia = el.querySelector('[data-side=a]');
+    if (act !== ih && act !== ia && !S.partial.has(id)) { ih.value = ok ? pick[0] : ''; ia.value = ok ? pick[1] : ''; }
+    el.classList.toggle('is-joker', j);
+    el.querySelector('[data-x2]').hidden = !j;
+    el.querySelector('[data-warn]').hidden = !S.partial.has(id);
+    const jb = el.querySelector('[data-act=joker]'); jb.setAttribute('aria-pressed', j); jb.hidden = !ok;
+  }
 }
 
 /* ===== Где смотреть ===== */
@@ -1347,18 +1482,19 @@ function renderWatch() {
 }
 
 /* ===== Навигация и общие ===== */
-const VIEWS = ['matches', 'season', 'tables', 'rating', 'watch'];
+const VIEWS = ['matches', 'season', 'tables', 'rating', 'watch', 'profile'];
 function setView(v, keepScroll, skipLoad) {
   if (!VIEWS.includes(v)) v = 'matches';
   S.view = v; store.set('view', v);
   for (const k of VIEWS) {
     $('#v-' + k).hidden = k !== v;
-    const t = $('#tab-' + k); if (k === v) t.setAttribute('aria-current', 'page'); else t.removeAttribute('aria-current');
+    const t = $('#tab-' + k); if (t) { if (k === v) t.setAttribute('aria-current', 'page'); else t.removeAttribute('aria-current'); }
   }
   if (v === 'season') renderSeason();
   if (v === 'tables') renderTables();
   if (v === 'rating') { renderRating(); loadPeriod(); }
   if (v === 'watch') renderWatch();
+  if (v === 'profile') renderProfile(true);
   if (!keepScroll) window.scrollTo(0, 0);
   // при каждом переходе на другую вкладку подтягиваем свежие данные: прогнозы друзей, очки, счёт
   if (!skipLoad) loadAll();
@@ -1372,6 +1508,7 @@ function refresh() {
   }
   if (S.view === 'tables') renderTables();
   if (S.view === 'rating') renderRating();
+  if (S.view === 'profile') renderProfile();
 }
 let toastT = 0;
 function toast(msg) {
@@ -1405,7 +1542,10 @@ document.querySelector('#v-rating .seg').addEventListener('click', e => {
 });
 $('#pPrev').addEventListener('click', () => { S.rOff--; S.periodBoard = null; renderRating(); loadPeriod(); });
 $('#pNext').addEventListener('click', () => { if (S.rOff < 0) { S.rOff++; S.periodBoard = null; renderRating(); loadPeriod(); } });
-$('#board').addEventListener('click', e => { const b = e.target.closest('[data-player]'); if (b) openStats(b.dataset.player, b.dataset.nick); });
+$('#board').addEventListener('click', e => {
+  const b = e.target.closest('[data-player]'); if (!b) return;
+  if (S.me && b.dataset.player === S.me.id) setView('profile'); else openStats(b.dataset.player, b.dataset.nick);
+});
 document.addEventListener('click', e => {
   if (e.target.closest('[data-open-auth]')) openAuth('login');
   const close = e.target.closest('[data-close]'); if (close) close.closest('.sheet').hidden = true;
@@ -1413,7 +1553,21 @@ document.addEventListener('click', e => {
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.sheet').forEach(s => { s.hidden = true; }); });
 $('#loginBtn').addEventListener('click', () => openAuth('login'));
-$('#meBtn').addEventListener('click', () => { if (S.me) openStats(S.me.id, S.me.nick); });
+$('#meBtn').addEventListener('click', () => { if (S.me) setView('profile'); });
+const pBody = $('#profileBody');
+pBody.addEventListener('input', onPickInput);
+pBody.addEventListener('click', e => {
+  const sg = e.target.closest('[data-pseg]'); if (sg) { S.pSeg = sg.dataset.pseg; renderProfile(true); return; }
+  if (e.target.closest('[data-go-empty]')) { S.onlyEmpty = true; S.seg = 'up'; S.comp = 'all'; setView('matches'); return; }
+  onMatchClick(e);
+});
+pBody.addEventListener('focusout', e => {
+  if (!S.pendingProfile) return;
+  const next = e.relatedTarget;
+  if (next && next.tagName === 'INPUT' && pBody.contains(next)) return;
+  setTimeout(() => renderProfile(), 0);
+});
+pBody.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.matches('.g')) e.target.blur(); });
 $('#modeLogin').addEventListener('click', () => setAuthMode('login'));
 $('#modeReg').addEventListener('click', () => setAuthMode('reg'));
 $('#authForm').addEventListener('submit', submitAuth);
