@@ -1,0 +1,1108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Кубок прогнозов</title>
+<meta name="description" content="Прогнозы на матчи ЛЧ, АПЛ, РПЛ и Ла Лиги с друзьями.">
+<meta name="theme-color" content="#163A27">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Кубок">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23163A27'/%3E%3Crect x='10' y='6' width='13' height='19' rx='2' fill='%23F4C430' transform='rotate(8 16 16)'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;700&display=swap">
+<style>
+/* Макет: одна колонка шириной до 640px, липкая шапка цвета газона, нижняя панель вкладок.
+   Матчи — карточки с окошками для счёта; очки игрока — на «жёлтой карточке» в шапке. */
+:root {
+  --bg: #EDF1EB; --surface: #FBFCF9; --surface-2: #E3E9E1; --ink: #14231A; --muted: #5A6A60; --line: #D3DBD2;
+  --head-bg: #163A27; --head-fg: #EFF4EE; --head-muted: #A9BDAF; --brand: #1F6B44;
+  --yellow: #F4C430; --on-yellow: #1D1A0B; --win: #2E8B57; --amber: #C98A06; --red: #C53A30;
+  --c-ucl: #3557B7; --c-epl: #7A3FA0; --c-rpl: #1C7C8C; --c-ll: #D2602A; --focus: #1F6B44;
+  --overlay: rgba(10, 20, 14, .5);
+  --shadow: 0 1px 2px rgba(20, 35, 26, .06), 0 4px 14px rgba(20, 35, 26, .05);
+  --f-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --f-body: "Golos Text", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0C1410; --surface: #142019; --surface-2: #1B2A21; --ink: #E6EDE7; --muted: #92A398; --line: #26362C;
+    --head-bg: #10251A; --head-fg: #E6EDE7; --head-muted: #8FA597; --brand: #4CB37C;
+    --win: #4CB97A; --amber: #E3A53A; --red: #E5594E;
+    --c-ucl: #7D9BF0; --c-epl: #C08BE0; --c-rpl: #5BC3D3; --c-ll: #F08A57; --focus: #F4C430;
+    --overlay: rgba(0, 0, 0, .6); --shadow: 0 1px 2px rgba(0, 0, 0, .3); color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--f-body); font-size: 15px; line-height: 1.45;
+  padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  -webkit-tap-highlight-color: transparent;
+}
+[hidden] { display: none !important; }
+.wrap {
+  max-width: 640px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+a { color: var(--brand); }
+h2, h3 { text-wrap: balance; }
+
+/* Шапка */
+.top { position: sticky; top: 0; z-index: 5; background: var(--head-bg); color: var(--head-fg); padding-top: env(safe-area-inset-top, 0px); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+.brand { display: flex; flex-direction: column; min-width: 0; }
+.brand b { font-family: var(--f-display); font-weight: 700; font-size: 18px; letter-spacing: -.01em; line-height: 1.15; }
+.brand span { font-size: 12px; color: var(--head-muted); }
+.me { display: flex; align-items: center; gap: 10px; flex-shrink: 0; background: none; border: 0; padding: 0; cursor: pointer; color: inherit; }
+.me-meta { text-align: right; font-size: 12px; line-height: 1.3; color: var(--head-muted); }
+.me-meta strong { display: block; color: var(--head-fg); font-weight: 600; font-size: 13px; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ycard {
+  width: 30px; height: 40px; border-radius: 4px; background: var(--yellow); color: var(--on-yellow);
+  display: grid; place-items: center; font-family: var(--f-display); font-weight: 700; font-size: 13px;
+  transform: rotate(-7deg); box-shadow: 0 2px 0 rgba(0, 0, 0, .28); font-variant-numeric: tabular-nums;
+}
+.login-btn { border: 1px solid rgba(255, 255, 255, .35); background: transparent; color: var(--head-fg); border-radius: 999px; padding: 7px 14px; font-weight: 600; font-size: 14px; cursor: pointer; }
+
+main { padding-block: 16px; }
+.view { display: flex; flex-direction: column; gap: 14px; }
+.view-title { font-family: var(--f-display); font-weight: 500; font-size: 20px; margin: 0; letter-spacing: -.01em; }
+.lede { margin: -6px 0 0; color: var(--muted); font-size: 14px; }
+
+/* Фильтры */
+.chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-inline: -4px; padding: 2px 4px; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { flex-shrink: 0; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 7px 14px; font-size: 14px; font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+.dot.ucl { background: var(--c-ucl); } .dot.epl { background: var(--c-epl); } .dot.rpl { background: var(--c-rpl); } .dot.ll { background: var(--c-ll); }
+.seg { display: grid; grid-template-columns: 1fr 1fr; background: var(--surface-2); border-radius: 10px; padding: 3px; }
+.seg button { border: 0; background: transparent; padding: 8px; border-radius: 8px; font-weight: 500; font-size: 14px; cursor: pointer; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+.progress { margin: 0; font-size: 13px; color: var(--muted); }
+.progress b { color: var(--ink); font-weight: 600; }
+.banner { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; font-size: 14px; }
+
+/* Матчи */
+#matchList { display: flex; flex-direction: column; gap: 10px; }
+.day { margin: 10px 0 0; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.day:first-child { margin-top: 0; }
+.m { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; display: flex; flex-direction: column; gap: 10px; }
+.m-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
+.tag { display: inline-flex; align-items: center; gap: 6px; min-width: 0; }
+.when { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--ink); flex-shrink: 0; }
+.when.live { color: var(--red); }
+.m-row { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 10px; }
+.team { font-weight: 600; font-size: 15px; line-height: 1.25; min-width: 0; overflow-wrap: anywhere; }
+.team.h { text-align: right; }
+.score { display: flex; align-items: center; gap: 6px; }
+.g { width: 44px; height: 48px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--bg); text-align: center; font-family: var(--f-display); font-weight: 700; font-size: 20px; padding: 0; font-variant-numeric: tabular-nums; transition: border-color .15s; }
+.g:focus { border-color: var(--focus); outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--focus) 25%, transparent); }
+.g:disabled { opacity: .55; }
+.has-pick .score .g { border-color: var(--brand); background: var(--surface); }
+.colon { font-family: var(--f-display); font-weight: 700; color: var(--muted); }
+.result { font-family: var(--f-display); font-weight: 700; font-size: 24px; font-variant-numeric: tabular-nums; min-width: 96px; text-align: center; letter-spacing: .02em; }
+.result span { color: var(--muted); padding-inline: 4px; }
+.result.pending { color: var(--muted); }
+.m-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); min-height: 22px; }
+.st { min-width: 0; }
+.st b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.st.warn { color: var(--amber); }
+.pts { flex-shrink: 0; font-family: var(--f-display); font-weight: 700; font-size: 12px; padding: 3px 9px; border-radius: 6px; background: var(--surface-2); color: var(--muted); font-variant-numeric: tabular-nums; }
+.pts.p3 { background: var(--yellow); color: var(--on-yellow); }
+.pts.p2 { background: color-mix(in srgb, var(--win) 22%, var(--surface)); color: var(--ink); }
+.pts.p1 { background: var(--surface-2); color: var(--ink); }
+.fr { display: flex; flex-wrap: wrap; gap: 6px; font-size: 12px; color: var(--muted); }
+.fr:empty { display: none; }
+.fp { display: inline-flex; align-items: center; gap: 6px; background: var(--surface-2); border-radius: 999px; padding: 3px 9px 3px 3px; }
+.fp b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.fp i { font-style: normal; font-weight: 600; color: var(--ink); }
+.av { width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0; display: inline-grid; place-items: center; font-size: 11px; font-weight: 700; color: #fff; background: var(--muted); }
+.adm { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; border-top: 1px dashed var(--line); padding-top: 10px; }
+.adm .g { width: 40px; height: 40px; font-size: 16px; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 7px 12px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn.big { padding: 12px 16px; font-size: 15px; border-radius: 10px; width: 100%; }
+.btn.link { border: 0; background: none; padding: 4px 0; color: var(--brand); }
+.btn.danger { color: var(--red); }
+.btn:disabled { opacity: .6; cursor: default; }
+.empty { background: var(--surface); border: 1px dashed var(--line); border-radius: 14px; padding: 22px 18px; text-align: center; color: var(--muted); }
+.empty strong { display: block; color: var(--ink); margin-bottom: 4px; font-size: 15px; }
+.empty .btn { margin-top: 12px; }
+
+/* Таблицы */
+#tblBody { display: flex; flex-direction: column; gap: 10px; }
+.tbl-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); text-align: center; padding: 10px 6px; border-bottom: 1px solid var(--line); }
+td { padding: 9px 6px; text-align: center; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: 0; }
+th.tm, td.tm { text-align: left; width: 100%; white-space: nowrap; }
+td.rk { color: var(--muted); width: 34px; }
+td.pt { font-weight: 700; font-family: var(--f-display); font-size: 13px; }
+tr.z-q td.rk { box-shadow: inset 3px 0 0 var(--win); }
+tr.z-p td.rk { box-shadow: inset 3px 0 0 var(--amber); }
+tr.z-r td.rk { box-shadow: inset 3px 0 0 var(--red); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--muted); margin: 0; padding: 0; list-style: none; }
+.legend li { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.note { font-size: 12px; color: var(--muted); margin: 0; }
+
+/* Рейтинг */
+.rules, .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; gap: 10px; }
+.rules h3, .panel h3 { margin: 0; font-size: 15px; }
+.rule { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: center; font-size: 14px; }
+.rule .pts { justify-self: start; }
+.rules p, .panel p { margin: 0; font-size: 13px; color: var(--muted); }
+.board { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.row { display: grid; grid-template-columns: 26px 34px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 11px 14px; border-bottom: 1px solid var(--line); }
+.row:last-child { border-bottom: 0; }
+.row.me { background: color-mix(in srgb, var(--yellow) 14%, var(--surface)); }
+.row .rk { font-family: var(--f-display); font-weight: 700; font-size: 13px; color: var(--muted); text-align: center; font-variant-numeric: tabular-nums; }
+.row .av { width: 34px; height: 34px; font-size: 14px; }
+.row .nm { font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
+.row .sub { display: block; font-size: 12px; color: var(--muted); font-weight: 400; }
+.row .tot { font-family: var(--f-display); font-weight: 700; font-size: 20px; font-variant-numeric: tabular-nums; }
+.account { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
+.account b { color: var(--ink); }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.form-grid .full { grid-column: 1 / -1; }
+.log { font-size: 12px; color: var(--muted); background: var(--surface-2); border-radius: 8px; padding: 8px 10px; overflow-wrap: anywhere; }
+
+/* Поля ввода */
+.field { display: grid; gap: 6px; min-width: 0; }
+.field label { font-size: 13px; font-weight: 600; }
+.input, select { appearance: none; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 11px 12px; font-size: 16px; width: 100%; min-width: 0; }
+select { padding-right: 38px; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+.input:focus, select:focus { border-color: var(--focus); outline: none; }
+
+/* Где смотреть */
+.ru-sum { margin: 0; font-size: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.ru-sum b { font-weight: 600; }
+.wc { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; display: grid; gap: 8px; }
+.wc h3 { margin: 0; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+.bc { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 8px; border-top: 1px solid var(--line); font-size: 14px; }
+.bc:first-of-type { border-top: 0; padding-top: 0; }
+.bc-name { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; min-width: 0; flex-wrap: wrap; }
+.lang { font-size: 11px; font-weight: 700; letter-spacing: .04em; padding: 2px 6px; border-radius: 4px; background: var(--ink); color: var(--bg); }
+.lang.other { background: var(--surface-2); color: var(--muted); }
+.bc a { flex-shrink: 0; font-size: 13px; font-weight: 600; text-decoration: none; }
+.none { font-size: 14px; color: var(--muted); }
+.links { display: grid; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.links a { display: flex; justify-content: space-between; gap: 10px; padding: 12px 14px; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; font-size: 14px; }
+.links a:last-child { border-bottom: 0; }
+.links a span { color: var(--muted); font-size: 13px; flex-shrink: 0; }
+.sec-title { margin: 6px 0 0; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+
+/* Окно входа */
+.sheet { position: fixed; inset: 0; z-index: 20; background: var(--overlay); display: flex; align-items: flex-end; justify-content: center; }
+.sheet-card { width: 100%; max-width: 520px; background: var(--surface); border-radius: 18px 18px 0 0; padding: 18px max(16px, env(safe-area-inset-right, 0px)) calc(18px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 14px; max-height: 92vh; overflow-y: auto; }
+.sheet-head { display: flex; justify-content: space-between; align-items: center; }
+.sheet-head h2 { margin: 0; font-family: var(--f-display); font-weight: 500; font-size: 18px; }
+.x { border: 0; background: var(--surface-2); width: 34px; height: 34px; border-radius: 50%; font-size: 18px; cursor: pointer; line-height: 1; }
+.err { margin: 0; color: var(--red); font-size: 14px; }
+.small { margin: 0; font-size: 12px; color: var(--muted); }
+
+/* Нижняя панель */
+.tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.tabbar .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+.tab { border: 0; background: none; padding: 8px 2px 9px; display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 11px; font-weight: 500; color: var(--muted); cursor: pointer; }
+.tab svg { width: 22px; height: 22px; }
+.tab[aria-current="page"] { color: var(--ink); }
+.tab[aria-current="page"] svg { color: var(--brand); }
+.toast { position: fixed; left: 50%; bottom: calc(80px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 8px); opacity: 0; background: var(--ink); color: var(--bg); padding: 9px 14px; border-radius: 10px; font-size: 13px; font-weight: 500; z-index: 30; transition: opacity .2s, transform .2s; pointer-events: none; max-width: calc(100% - 32px); text-align: center; }
+.toast.on { opacity: 1; transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) { .toast, .g { transition: none; } }
+@media (max-width: 380px) {
+  .g { width: 40px; height: 44px; font-size: 18px; }
+  .team { font-size: 14px; }
+  .me-meta { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><b>Кубок прогнозов</b><span>ЛЧ · АПЛ · РПЛ · Ла Лига</span></div>
+    <button type="button" class="login-btn" id="loginBtn">Войти</button>
+    <button type="button" class="me" id="meBtn" hidden aria-label="Мой профиль и рейтинг">
+      <span class="me-meta"><strong id="meNick"></strong><span id="meRank"></span></span>
+      <span class="ycard" id="mePts">0</span>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- МАТЧИ -->
+  <section class="view" id="v-matches" aria-labelledby="t-matches">
+    <h2 class="view-title" id="t-matches">Матчи</h2>
+    <div class="banner" id="authBanner" hidden>
+      <span>Войди или зарегистрируйся, чтобы делать прогнозы.</span>
+      <button type="button" class="btn primary" data-open-auth>Войти</button>
+    </div>
+    <div class="chips" id="compChips" role="group" aria-label="Турнир"></div>
+    <div class="seg" role="group" aria-label="Какие матчи показать">
+      <button type="button" id="segUp" data-seg="up" aria-pressed="true">Предстоящие</button>
+      <button type="button" id="segDone" data-seg="done" aria-pressed="false">Сыгранные</button>
+    </div>
+    <p class="progress" id="progress"></p>
+    <div id="matchList"><div class="empty"><strong>Загружаю матчи…</strong>Расписание и прогнозы друзей появятся через секунду.</div></div>
+  </section>
+
+  <!-- ТАБЛИЦЫ -->
+  <section class="view" id="v-tables" aria-labelledby="t-tables" hidden>
+    <h2 class="view-title" id="t-tables">Таблицы</h2>
+    <div class="chips" id="tblChips" role="group" aria-label="Турнир"></div>
+    <div id="tblBody"></div>
+  </section>
+
+  <!-- РЕЙТИНГ -->
+  <section class="view" id="v-rating" aria-labelledby="t-rating" hidden>
+    <h2 class="view-title" id="t-rating">Рейтинг друзей</h2>
+    <div id="board"></div>
+    <div class="rules">
+      <h3>Как начисляются очки</h3>
+      <div class="rule"><span class="pts p3">3</span><span>Точный счёт</span></div>
+      <div class="rule"><span class="pts p2">2</span><span>Угадана разница мячей или ничья</span></div>
+      <div class="rule"><span class="pts p1">1</span><span>Угадан только победитель</span></div>
+      <p>Пример: прогноз 2:1, матч закончился 3:2 — разница та же, 2 очка. Прогноз закрывается в момент начала матча. Прогнозы друзей видны после стартового свистка.</p>
+    </div>
+    <div class="panel" id="accountPanel" hidden>
+      <div class="account"><span>Ты вошёл как <b id="accNick"></b></span><button type="button" class="btn" id="logoutBtn">Выйти</button></div>
+      <p>Чтобы позвать друзей, просто отправь им ссылку на этот сайт. Они зарегистрируются по нику и паролю.</p>
+      <button type="button" class="btn" id="copyLink">Скопировать ссылку</button>
+    </div>
+    <!-- Админка: видна только администратору -->
+    <div class="panel" id="adminPanel" hidden>
+      <h3>Управление</h3>
+      <p id="syncInfo">Загружаю сведения об обновлении…</p>
+      <div class="log" id="syncLog" hidden></div>
+      <button type="button" class="btn" id="syncBtn">Обновить данные сейчас</button>
+      <h3>Добавить матч</h3>
+      <p>Нужно, только если какого-то матча нет в автоматической загрузке. Время указывай своё, местное.</p>
+      <form id="addForm" class="form-grid" novalidate>
+        <div class="field"><label for="addComp">Турнир</label>
+          <select id="addComp"><option value="rpl">РПЛ</option><option value="ucl">Лига чемпионов</option><option value="epl">Премьер-лига</option><option value="ll">Ла Лига</option></select></div>
+        <div class="field"><label for="addRound">Тур</label><input class="input" id="addRound" placeholder="15-й тур"></div>
+        <div class="field"><label for="addDate">Дата</label><input class="input" id="addDate" type="date"></div>
+        <div class="field"><label for="addTime">Время</label><input class="input" id="addTime" type="time" value="19:00"></div>
+        <div class="field"><label for="addHome">Хозяева</label><input class="input" id="addHome" placeholder="Зенит"></div>
+        <div class="field"><label for="addAway">Гости</label><input class="input" id="addAway" placeholder="Спартак"></div>
+        <button type="submit" class="btn primary big full" id="addBtn">Добавить матч</button>
+      </form>
+      <p>Счёт сыгранного матча вносится на вкладке «Матчи» → «Сыгранные», кнопка «Внести счёт».</p>
+    </div>
+  </section>
+
+  <!-- ГДЕ СМОТРЕТЬ -->
+  <section class="view" id="v-watch" aria-labelledby="t-watch" hidden>
+    <h2 class="view-title" id="t-watch">Где смотреть</h2>
+    <p class="lede">Официальные трансляции в стране, где ты сейчас находишься. Каналы на русском идут первыми.</p>
+    <div class="field">
+      <label for="country">Где ты сейчас</label>
+      <select id="country"></select>
+    </div>
+    <p class="ru-sum" id="ruSum"></p>
+    <div id="watchList" class="view"></div>
+    <h3 class="sec-title">Официальные списки вещателей</h3>
+    <div class="links">
+      <a href="https://www.uefa.com/uefachampionsleague/news/0255-0e953317b026-d817916329de-1000--%D0%B3%D0%B4%D0%B5-%D1%81%D0%BC%D0%BE%D1%82/" target="_blank" rel="noopener">Лига чемпионов · УЕФА <span>uefa.com ↗</span></a>
+      <a href="https://www.premierleague.com/en/news/3703577" target="_blank" rel="noopener">Премьер-лига · вещатели 2025–2028 <span>premierleague.com ↗</span></a>
+      <a href="https://www.laliga.com/en-ES/where-to-watch-laliga-easports" target="_blank" rel="noopener">Ла Лига · где смотреть <span>laliga.com ↗</span></a>
+      <a href="https://premierliga.ru" target="_blank" rel="noopener">РПЛ · сайт лиги <span>premierliga.ru ↗</span></a>
+      <a href="https://www.livesoccertv.com/ru/" target="_blank" rel="noopener">Телегид по каналам всех стран <span>livesoccertv.com ↗</span></a>
+    </div>
+    <p class="note">Права на показ продаются отдельно для каждой страны, поэтому список меняется вместе с твоим местоположением. Данные: УЕФА на 20 октября 2026 года, список вещателей АПЛ на 2025–2028 годы, сведения о Матч ТВ и Okko. Если канала нет в списке, проверь официальную страницу турнира.</p>
+  </section>
+</main>
+
+<nav class="tabbar" aria-label="Разделы">
+  <div class="wrap">
+    <button type="button" class="tab" id="tab-matches" data-view="matches" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5l4 2.9-1.5 4.7h-5L8 10.4z"/><path d="M12 3v4.5M16 10.4l4.3-1.4M14.5 15.1l2.6 3.7M9.5 15.1l-2.6 3.7M8 10.4L3.7 9"/></svg>
+      Матчи
+    </button>
+    <button type="button" class="tab" id="tab-tables" data-view="tables">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 9h17M3.5 14h17M8.5 4v16"/></svg>
+      Таблицы
+    </button>
+    <button type="button" class="tab" id="tab-rating" data-view="rating">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20h7M10 17h4v3h-4z"/></svg>
+      Рейтинг
+    </button>
+    <button type="button" class="tab" id="tab-watch" data-view="watch">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 3l4 3 4-3M8 21h8"/><path d="M10.5 9.5v5l4-2.5z"/></svg>
+      Где смотреть
+    </button>
+  </div>
+</nav>
+
+<!-- Окно входа / регистрации -->
+<div class="sheet" id="authSheet" hidden role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <form class="sheet-card" id="authForm" novalidate>
+    <div class="sheet-head"><h2 id="authTitle">Вход</h2><button type="button" class="x" id="authClose" aria-label="Закрыть">×</button></div>
+    <div class="seg" role="group" aria-label="Вход или регистрация">
+      <button type="button" id="modeLogin" aria-pressed="true">Вход</button>
+      <button type="button" id="modeReg" aria-pressed="false">Регистрация</button>
+    </div>
+    <div class="field"><label for="authNick">Ник</label><input class="input" id="authNick" autocomplete="username" autocapitalize="off" maxlength="20" placeholder="Например, Юра"></div>
+    <div class="field"><label for="authPass">Пароль</label><input class="input" id="authPass" type="password" autocomplete="current-password" placeholder="Не короче 4 символов"></div>
+    <p class="err" id="authErr" hidden></p>
+    <button type="submit" class="btn primary big" id="authSubmit">Войти</button>
+    <p class="small" id="authHint">Нет аккаунта? Нажми «Регистрация» — нужен только ник и пароль, почта не нужна.</p>
+  </form>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =====================================================================
+   НАСТРОЙКИ. Сюда вписываются адрес проекта Supabase и публичный ключ
+   (Project Settings → API). Публичный ключ можно показывать всем:
+   данные защищены правилами базы.
+   ===================================================================== */
+const CONFIG = {
+  SUPABASE_URL: 'https://mdhnnbwjeqgndmtmujry.supabase.co',
+  SUPABASE_KEY: 'sb_publishable_naxN6Kh-Hr_spK9YxVfPDA_dFACPhkG'
+};
+
+/* ===== Справочники ===== */
+const COMPS = {
+  ucl: { name: 'Лига чемпионов', short: 'ЛЧ' },
+  epl: { name: 'Премьер-лига', short: 'АПЛ' },
+  rpl: { name: 'РПЛ', short: 'РПЛ' },
+  ll:  { name: 'Ла Лига', short: 'Ла Лига' }
+};
+const ORDER = ['ucl', 'epl', 'rpl', 'll'];
+// Зоны таблиц: [с места, по место, тип, подпись]
+const ZONES = {
+  ucl: [[1, 8, 'q', '1/8 финала'], [9, 24, 'p', 'Стыковые матчи'], [25, 36, 'r', 'Выбывание']],
+  epl: [[1, 4, 'q', 'Лига чемпионов'], [18, 20, 'r', 'Вылет']],
+  ll:  [[1, 4, 'q', 'Лига чемпионов'], [18, 20, 'r', 'Вылет']],
+  rpl: [[13, 14, 'p', 'Переходные матчи'], [15, 16, 'r', 'Вылет']]
+};
+const ZONE_COLOR = { q: 'var(--win)', p: 'var(--amber)', r: 'var(--red)' };
+
+/* Русские названия команд. ESPN отдаёт английские названия;
+   сайт приводит их к простому виду и ищет здесь. Если команды нет в списке,
+   показывается английское название — его можно добавить строкой add('…', '…'). */
+const RU = {};
+const STOP = new Set(['fc', 'cf', 'afc', 'sc', 'ac', 'as', 'ssc', 'rc', 'cd', 'ud', 'sd', 'club', 'de', 'del', 'la', 'osc', 'sk', 'fk', 'bk', 'rcd', 'ca', 'sl', 'vfb', 'cp', '1907', '1909', '04', 'balompie', 'calcio', 'clube', 'portugal']);
+function norm(s) {
+  return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+    .replace(/ø/g, 'o').replace(/ß/g, 'ss').replace(/[^a-z0-9]+/g, ' ').trim()
+    .split(' ').filter(w => w && !STOP.has(w)).join(' ');
+}
+function add(ru, ...keys) { for (const k of keys) RU[norm(k)] = ru; }
+// АПЛ и Чемпионшип
+add('Арсенал', 'Arsenal'); add('Астон Вилла', 'Aston Villa'); add('Борнмут', 'Bournemouth', 'AFC Bournemouth');
+add('Брентфорд', 'Brentford'); add('Брайтон', 'Brighton', 'Brighton Hove', 'Brighton & Hove Albion');
+add('Челси', 'Chelsea'); add('Кристал Пэлас', 'Crystal Palace'); add('Эвертон', 'Everton'); add('Фулхэм', 'Fulham');
+add('Ипсвич', 'Ipswich', 'Ipswich Town'); add('Лестер', 'Leicester', 'Leicester City'); add('Ливерпуль', 'Liverpool');
+add('Манчестер Сити', 'Man City', 'Manchester City'); add('Манчестер Юнайтед', 'Man United', 'Man Utd', 'Manchester United');
+add('Ньюкасл', 'Newcastle', 'Newcastle United'); add('Ноттингем Форест', 'Nottingham', 'Nottingham Forest', "Nott'm Forest");
+add('Саутгемптон', 'Southampton'); add('Тоттенхэм', 'Tottenham', 'Tottenham Hotspur', 'Spurs');
+add('Вест Хэм', 'West Ham', 'West Ham United'); add('Вулверхэмптон', 'Wolverhampton', 'Wolves', 'Wolverhampton Wanderers');
+add('Лидс', 'Leeds', 'Leeds United'); add('Сандерленд', 'Sunderland'); add('Бернли', 'Burnley');
+add('Ковентри', 'Coventry', 'Coventry City'); add('Халл Сити', 'Hull', 'Hull City'); add('Шеффилд Юнайтед', 'Sheffield United', 'Sheffield Utd');
+add('Мидлсбро', 'Middlesbrough'); add('Уотфорд', 'Watford'); add('Норвич', 'Norwich', 'Norwich City'); add('Вест Бромвич', 'West Brom', 'West Bromwich Albion');
+// Ла Лига
+add('Барселона', 'Barcelona', 'Barça', 'FC Barcelona'); add('Реал Мадрид', 'Real Madrid');
+add('Атлетико', 'Atletico', 'Atleti', 'Atlético Madrid', 'Club Atlético de Madrid'); add('Атлетик', 'Athletic', 'Athletic Club', 'Athletic Bilbao');
+add('Реал Сосьедад', 'Real Sociedad'); add('Бетис', 'Betis', 'Real Betis', 'Real Betis Balompié'); add('Севилья', 'Sevilla', 'Sevilla FC');
+add('Вильярреал', 'Villarreal'); add('Валенсия', 'Valencia'); add('Сельта', 'Celta', 'Celta Vigo', 'RC Celta de Vigo');
+add('Осасуна', 'Osasuna', 'CA Osasuna'); add('Хетафе', 'Getafe'); add('Райо Вальекано', 'Rayo Vallecano', 'Rayo');
+add('Мальорка', 'Mallorca', 'RCD Mallorca'); add('Лас-Пальмас', 'Las Palmas'); add('Жирона', 'Girona');
+add('Алавес', 'Alavés', 'Deportivo Alavés'); add('Эспаньол', 'Espanyol', 'RCD Espanyol'); add('Леганес', 'Leganés');
+add('Вальядолид', 'Valladolid', 'Real Valladolid'); add('Леванте', 'Levante'); add('Эльче', 'Elche'); add('Овьедо', 'Oviedo', 'Real Oviedo');
+add('Малага', 'Málaga', 'Malaga CF'); add('Расинг', 'Racing', 'Racing Santander', 'Real Racing Club'); add('Депортиво', 'Deportivo', 'Deportivo La Coruña', 'RC Deportivo');
+add('Гранада', 'Granada'); add('Кадис', 'Cádiz'); add('Альмерия', 'Almería'); add('Спортинг Хихон', 'Sporting Gijón'); add('Сарагоса', 'Zaragoza', 'Real Zaragoza');
+// Лига чемпионов
+add('ПСЖ', 'PSG', 'Paris Saint-Germain', 'Paris SG'); add('Бавария', 'Bayern', 'Bayern München', 'Bayern Munich');
+add('Интер', 'Inter', 'Internazionale', 'Inter Milan', 'FC Internazionale Milano'); add('Милан', 'Milan', 'AC Milan');
+add('Ювентус', 'Juventus'); add('Наполи', 'Napoli', 'SSC Napoli'); add('Рома', 'Roma', 'AS Roma'); add('Аталанта', 'Atalanta'); add('Лацио', 'Lazio'); add('Комо', 'Como', 'Como 1907');
+add('Байер', 'Leverkusen', 'Bayer Leverkusen', 'Bayer 04 Leverkusen'); add('Боруссия Д', 'Dortmund', 'Borussia Dortmund', 'BVB');
+add('РБ Лейпциг', 'RB Leipzig', 'Leipzig'); add('Штутгарт', 'Stuttgart', 'VfB Stuttgart'); add('Айнтрахт', 'Frankfurt', 'Eintracht Frankfurt');
+add('Бенфика', 'Benfica', 'SL Benfica'); add('Спортинг', 'Sporting CP', 'Sporting', 'Sporting Clube de Portugal'); add('Порту', 'Porto', 'FC Porto');
+add('Брюгге', 'Club Brugge', 'Brugge'); add('ПСВ', 'PSV', 'PSV Eindhoven'); add('Фейеноорд', 'Feyenoord'); add('Аякс', 'Ajax', 'AFC Ajax');
+add('Селтик', 'Celtic'); add('Монако', 'Monaco', 'AS Monaco'); add('Лилль', 'Lille', 'LOSC', 'Lille OSC'); add('Брест', 'Brest', 'Stade Brestois');
+add('Марсель', 'Marseille', 'Olympique Marseille'); add('Ланс', 'Lens', 'RC Lens', 'Racing Club de Lens');
+add('Галатасарай', 'Galatasaray'); add('Фенербахче', 'Fenerbahçe'); add('Шахтёр', 'Shakhtar', 'Shakhtar Donetsk');
+add('Славия', 'Slavia Praha', 'Slavia Prague'); add('Будё-Глимт', 'Bodø/Glimt', 'Bodo/Glimt', 'Bodoe/Glimt'); add('Викинг', 'Viking', 'Viking FK');
+add('ЛАСК', 'LASK', 'LASK Linz'); add('Слован', 'Slovan Bratislava', 'ŠK Slovan Bratislava'); add('АЕК', 'AEK', 'AEK Athens');
+add('Олимпиакос', 'Olympiakos', 'Olympiacos'); add('Сабах', 'Sabah', 'Sabah FK'); add('Карабах', 'Qarabağ', 'Qarabag');
+add('Црвена Звезда', 'Crvena Zvezda', 'Red Star Belgrade'); add('Динамо Загреб', 'Dinamo Zagreb'); add('Янг Бойз', 'Young Boys');
+add('Зальцбург', 'Salzburg', 'RB Salzburg'); add('Штурм', 'Sturm Graz'); add('Копенгаген', 'Copenhagen', 'FC København');
+add('Юнион', 'Union SG', 'Union Saint-Gilloise'); add('Пафос', 'Pafos'); add('Кайрат', 'Kairat', 'Kairat Almaty');
+add('Фейеноорд', 'Feyenoord Rotterdam'); add('Шахтёр', 'FC Shakhtar Donetsk'); add('Бетис', 'Real Betis Seville');
+add('Ноттингем Форест', 'Nottm Forest'); add('Атлетико', 'Atletico de Madrid'); add('Депортиво', 'Deportivo de La Coruna', 'RC Deportivo de A Coruna');
+// РПЛ
+add('Зенит', 'Zenit', 'Zenit St Petersburg', 'Zenit St. Petersburg', 'Zenit Saint Petersburg', 'Zenit St.Petersburg');
+add('Спартак', 'Spartak', 'Spartak Moscow', 'Spartak Moskva'); add('ЦСКА', 'CSKA', 'CSKA Moscow', 'CSKA Moskva');
+add('Динамо', 'Dynamo Moscow', 'Dinamo Moscow', 'Dynamo Moskva', 'Dinamo Moskva');
+add('Локомотив', 'Lokomotiv', 'Lokomotiv Moscow', 'Lokomotiv Moskva'); add('Краснодар', 'Krasnodar', 'FC Krasnodar');
+add('Ростов', 'Rostov', 'FK Rostov'); add('Рубин', 'Rubin', 'Rubin Kazan'); add('Ахмат', 'Akhmat', 'Akhmat Grozny');
+add('Крылья Советов', 'Krylia Sovetov', 'Krylya Sovetov', 'Krylia Sovetov Samara', 'Krylya Sovetov Samara');
+add('Оренбург', 'Orenburg', 'FC Orenburg', 'Gazovik Orenburg'); add('Акрон', 'Akron', 'Akron Togliatti', 'Akron Tolyatti');
+add('Факел', 'Fakel', 'Fakel Voronezh'); add('Балтика', 'Baltika', 'Baltika Kaliningrad');
+add('Динамо Мх', 'Dynamo Makhachkala', 'Dinamo Makhachkala'); add('Родина', 'Rodina', 'Rodina Moscow', 'Rodina Moskva');
+add('Пари НН', 'Pari NN', 'Pari Nizhny Novgorod', 'Nizhny Novgorod', 'FC Nizhny Novgorod'); add('Сочи', 'Sochi', 'PFC Sochi');
+add('Химки', 'Khimki'); add('Торпедо', 'Torpedo Moscow', 'Torpedo Moskva'); add('Урал', 'Ural', 'Ural Yekaterinburg');
+add('Арсенал Тула', 'Arsenal Tula'); add('Уфа', 'Ufa'); add('Енисей', 'Yenisey', 'Yenisey Krasnoyarsk'); add('Шинник', 'Shinnik', 'Shinnik Yaroslavl');
+function ru(name) { return RU[norm(name)] || name; }
+
+/* Вещатели. ru: 1 — трансляция на русском; lang — другой язык комментария, если известен. */
+const BC = {
+  okko: { n: 'Okko', ru: 1, u: 'https://okko.tv' }, match: { n: 'Матч ТВ', ru: 1, u: 'https://matchtv.ru' }, stv: { n: 'СТВ', ru: 1 },
+  setRu: { n: 'Setanta Sports', ru: 1, u: 'https://www.setantasports.com' }, setanta: { n: 'Setanta Sports', u: 'https://www.setantasports.com' },
+  setUa: { n: 'Setanta Sports', lang: 'укр.', u: 'https://www.setantasports.com' }, megogo: { n: 'Megogo', lang: 'укр.', u: 'https://megogo.net' },
+  dazn: { n: 'DAZN', u: 'https://www.dazn.com' }, prime: { n: 'Amazon Prime Video', u: 'https://www.primevideo.com' },
+  zdf: { n: 'ZDF', u: 'https://www.zdf.de' }, sky: { n: 'Sky Sport', u: 'https://www.sky.de' }, paramount: { n: 'Paramount+', u: 'https://www.paramountplus.com' }
+};
+const n_ = (name) => ({ n: name });
+const WATCH = {
+  ru: { name: 'Россия', ucl: [BC.okko], epl: 'none', rpl: [BC.match], ll: [BC.match] },
+  by: { name: 'Беларусь', ucl: [BC.stv, BC.okko], epl: 'tbd' },
+  kz: { name: 'Казахстан', ucl: [n_('Qazsport'), n_('Qsport')], epl: [BC.setRu] },
+  am: { name: 'Армения', ucl: [n_('Fast Media')], epl: [n_('Fast Sports')] },
+  ge: { name: 'Грузия', ucl: [BC.setanta, n_('Silknet')], epl: [BC.setanta] },
+  az: { name: 'Азербайджан', ucl: [n_('CBC Sport'), n_('TVNet'), n_('İctimai TV')], epl: [BC.setanta, n_('İdman TV'), n_('Sport TV')] },
+  uz: { name: 'Узбекистан', ucl: [n_("Z'OR TV"), n_('Quest Media')] },
+  kg: { name: 'Кыргызстан', ucl: [n_('Quest Media')], epl: [BC.setRu] },
+  tj: { name: 'Таджикистан', ucl: [n_('Quest Media')], epl: [n_('Varzish TV')] },
+  md: { name: 'Молдова', ucl: [BC.setanta, n_('Jurnal TV')], epl: [BC.setanta] },
+  ua: { name: 'Украина', ucl: [BC.megogo], epl: [BC.setUa] },
+  il: { name: 'Израиль', ucl: [n_('The Sports Channel')], epl: [n_('Sport 1')] },
+  baltic: { name: 'Латвия, Литва, Эстония', ucl: [n_('TV3')], epl: [n_('Go3 Sport')] },
+  de: { name: 'Германия', ucl: [BC.dazn, BC.prime, BC.zdf], epl: [BC.sky] },
+  us: { name: 'США', ucl: [BC.paramount, n_('TUDN'), BC.dazn], epl: [n_('NBC и Peacock'), n_('Telemundo'), n_('USA Network')] },
+  other: { name: 'Другая страна' }
+};
+const OFFICIAL = {
+  ucl: 'https://www.uefa.com/uefachampionsleague/news/0255-0e953317b026-d817916329de-1000--%D0%B3%D0%B4%D0%B5-%D1%81%D0%BC%D0%BE%D1%82/',
+  epl: 'https://www.premierleague.com/en/news/3703577',
+  ll: 'https://www.laliga.com/en-ES/where-to-watch-laliga-easports',
+  rpl: 'https://premierliga.ru'
+};
+const TZ_COUNTRY = {
+  'Europe/Minsk': 'by', 'Asia/Yerevan': 'am', 'Asia/Tbilisi': 'ge', 'Asia/Baku': 'az', 'Asia/Tashkent': 'uz', 'Asia/Samarkand': 'uz',
+  'Asia/Bishkek': 'kg', 'Asia/Dushanbe': 'tj', 'Europe/Chisinau': 'md', 'Europe/Kyiv': 'ua', 'Europe/Kiev': 'ua', 'Asia/Jerusalem': 'il',
+  'Europe/Riga': 'baltic', 'Europe/Vilnius': 'baltic', 'Europe/Tallinn': 'baltic', 'Europe/Berlin': 'de'
+};
+
+/* ===== Состояние ===== */
+const S = {
+  view: 'matches', comp: 'all', seg: 'up', tcomp: 'ucl', country: 'other',
+  token: null, me: null,
+  matches: new Map(), standings: {}, rplResults: [], board: [], recent: [], counts: {}, my: {},
+  sync: null, loaded: false, loadError: '',
+  partial: new Set(), saveT: {}, saving: new Set(), pendingSave: new Set(),
+  listSig: '', pendingRebuild: false, openAdmin: new Set(), authMode: 'login'
+};
+const LIVE_MS = 115 * 60000;
+const $ = (s) => document.querySelector(s);
+const store = {
+  get(k, d) { try { const v = localStorage.getItem('kubok:' + k); return v == null ? d : v; } catch (e) { return d; } },
+  set(k, v) { try { if (v == null) localStorage.removeItem('kubok:' + k); else localStorage.setItem('kubok:' + k, v); } catch (e) {} }
+};
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function plural(k, one, few, many) { const a = Math.abs(k) % 100, b = a % 10; if (a > 10 && a < 20) return many; if (b > 1 && b < 5) return few; if (b === 1) return one; return many; }
+
+/* ===== Связь с базой ===== */
+const API = {
+  ready: !CONFIG.SUPABASE_URL.includes('ВСТАВЬ') && !CONFIG.SUPABASE_KEY.includes('ВСТАВЬ'),
+  headers() {
+    const h = { apikey: CONFIG.SUPABASE_KEY, 'Content-Type': 'application/json' };
+    if (CONFIG.SUPABASE_KEY.startsWith('eyJ')) h.Authorization = 'Bearer ' + CONFIG.SUPABASE_KEY;
+    return h;
+  },
+  async req(path, opts) {
+    let r;
+    try { r = await fetch(CONFIG.SUPABASE_URL.replace(/\/+$/, '') + '/rest/v1/' + path, Object.assign({ headers: this.headers() }, opts)); }
+    catch (e) { throw new Error('Нет связи с сервером. Проверь интернет.'); }
+    const t = await r.text(); let j = null;
+    try { j = t ? JSON.parse(t) : null; } catch (e) {}
+    if (!r.ok) throw new Error((j && (j.message || j.error_description || j.hint)) || ('Ошибка сервера (' + r.status + ')'));
+    return j;
+  },
+  get(path) { return this.req(path, { method: 'GET' }); },
+  rpc(fn, args) { return this.req('rpc/' + fn, { method: 'POST', body: JSON.stringify(args || {}) }); }
+};
+
+/* ===== Время ===== */
+const fTime = new Intl.DateTimeFormat('ru-RU', { hour: '2-digit', minute: '2-digit' });
+const fDay = new Intl.DateTimeFormat('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' });
+const fDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long' });
+const fStamp = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
+function dayKey(d) { return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate(); }
+function dayLabel(d) {
+  const now = new Date(), t = new Date(now), y = new Date(now);
+  t.setDate(now.getDate() + 1); y.setDate(now.getDate() - 1);
+  if (dayKey(d) === dayKey(now)) return 'Сегодня';
+  if (dayKey(d) === dayKey(t)) return 'Завтра';
+  if (dayKey(d) === dayKey(y)) return 'Вчера';
+  return fDay.format(d);
+}
+function until(ms) {
+  const min = Math.max(1, Math.round(ms / 60000));
+  if (min < 60) return 'через ' + min + ' мин';
+  const h = Math.round(min / 60);
+  if (h < 24) return 'через ' + h + ' ' + plural(h, 'час', 'часа', 'часов');
+  const d = Math.round(h / 24);
+  return 'через ' + d + ' ' + plural(d, 'день', 'дня', 'дней');
+}
+// up — можно делать прогноз; live — идёт; wait — ждём счёт; ft — завершён; pp — перенесён
+function phase(m, now) {
+  if (m.status === 'finished') return 'ft';
+  if (m.status === 'postponed') return 'pp';
+  const k = Date.parse(m.kickoff);
+  if (now < k && m.status === 'scheduled') return 'up';
+  if (m.status === 'live' || now < k + LIVE_MS) return 'live';
+  return 'wait';
+}
+
+/* ===== Очки ===== */
+function validPick(p) { return Array.isArray(p) && p.length === 2 && Number.isInteger(p[0]) && Number.isInteger(p[1]); }
+function score(p, m) {
+  if (m.status !== 'finished' || !validPick(p) || m.hg == null || m.ag == null) return null;
+  const [ph, pa] = p, rh = m.hg, ra = m.ag;
+  if (ph === rh && pa === ra) return 3;
+  if (ph - pa === rh - ra) return 2;
+  if (Math.sign(ph - pa) === Math.sign(rh - ra)) return 1;
+  return 0;
+}
+function rankedBoard() {
+  const rows = S.board.slice().sort((a, b) => b.pts - a.pts || b.exact - a.exact || b.total - a.total || a.nick.localeCompare(b.nick));
+  let rank = 0, prev = null;
+  rows.forEach((r, i) => { if (!prev || r.pts !== prev.pts || r.exact !== prev.exact) rank = i + 1; r.rank = rank; prev = r; });
+  return rows;
+}
+function nickOf(id) { const r = S.board.find(x => x.player_id === id); return r ? r.nick : 'Игрок'; }
+function avatar(nick) {
+  let h = 0; for (const ch of nick) h = (h * 31 + ch.codePointAt(0)) % 360;
+  return '<span class="av" style="background:hsl(' + h + ' 45% 42%)" aria-hidden="true">' + esc((nick.trim()[0] || '?').toUpperCase()) + '</span>';
+}
+
+/* ===== Загрузка данных ===== */
+let loading = false;
+async function loadAll() {
+  if (!API.ready || loading) return;
+  loading = true;
+  try {
+    const since = new Date(Date.now() - 14 * 864e5).toISOString();
+    const [m, board, recent, counts, st, mine, sync] = await Promise.all([
+      API.get('matches?select=id,comp,round,kickoff,home,away,hg,ag,status,source&kickoff=gte.' + encodeURIComponent(since) + '&order=kickoff.asc&limit=1000'),
+      API.rpc('leaderboard'),
+      API.rpc('recent_picks', { p_days: 14 }),
+      API.rpc('pick_counts'),
+      API.get('standings?select=comp,rows,note,base_until,updated_at'),
+      S.token ? API.rpc('my_picks', { p_token: S.token }) : Promise.resolve(null),
+      S.me && S.me.is_admin ? API.rpc('sync_status') : Promise.resolve(null)
+    ]);
+    S.matches = new Map((m || []).map(x => [x.id, x]));
+    S.board = board || [];
+    S.recent = recent || [];
+    S.counts = {}; for (const c of counts || []) S.counts[c.match_id] = c.n;
+    S.standings = {}; for (const s of st || []) S.standings[s.comp] = s;
+    if (mine && !S.saving.size && !Object.keys(S.saveT).length) {
+      S.my = {}; for (const p of mine) S.my[p.match_id] = [p.hg, p.ag];
+    }
+    S.sync = sync;
+    const rpl = S.standings.rpl;
+    S.rplResults = rpl && rpl.base_until
+      ? await API.get('matches?select=home,away,hg,ag&comp=eq.rpl&status=eq.finished&kickoff=gte.' + encodeURIComponent(rpl.base_until) + '&limit=1000')
+      : [];
+    S.loaded = true; S.loadError = '';
+  } catch (e) {
+    S.loadError = e.message || 'Не удалось загрузить данные';
+  } finally {
+    loading = false;
+    refresh();
+  }
+}
+
+/* ===== Вход ===== */
+async function restoreSession() {
+  const t = store.get('token', null);
+  if (!t || !API.ready) return;
+  S.token = t;
+  try {
+    const me = await API.rpc('me', { p_token: t });
+    if (me) S.me = me; else { S.token = null; store.set('token', null); }
+  } catch (e) { /* сеть недоступна — оставим токен и попробуем позже */ }
+}
+function openAuth(mode) {
+  setAuthMode(mode || 'login');
+  $('#authErr').hidden = true;
+  $('#authSheet').hidden = false;
+  setTimeout(() => $('#authNick').focus(), 50);
+}
+function closeAuth() { $('#authSheet').hidden = true; }
+function setAuthMode(mode) {
+  S.authMode = mode;
+  const reg = mode === 'reg';
+  $('#modeLogin').setAttribute('aria-pressed', !reg);
+  $('#modeReg').setAttribute('aria-pressed', reg);
+  $('#authTitle').textContent = reg ? 'Регистрация' : 'Вход';
+  $('#authSubmit').textContent = reg ? 'Зарегистрироваться' : 'Войти';
+  $('#authPass').setAttribute('autocomplete', reg ? 'new-password' : 'current-password');
+  $('#authHint').textContent = reg
+    ? 'Придумай ник и пароль. Почта не нужна. Запомни пароль: по нему ты войдёшь с любого устройства.'
+    : 'Нет аккаунта? Нажми «Регистрация» — нужен только ник и пароль, почта не нужна.';
+}
+async function submitAuth(e) {
+  e.preventDefault();
+  const nick = $('#authNick').value.trim(), pass = $('#authPass').value;
+  const err = $('#authErr'), btn = $('#authSubmit');
+  err.hidden = true;
+  if (nick.length < 2) { err.textContent = 'Введи ник, не короче 2 символов.'; err.hidden = false; return; }
+  if (pass.length < 4) { err.textContent = 'Пароль должен быть не короче 4 символов.'; err.hidden = false; return; }
+  btn.disabled = true;
+  try {
+    const r = await API.rpc(S.authMode === 'reg' ? 'register' : 'login', { p_nick: nick, p_pass: pass });
+    S.token = r.token; S.me = { id: r.id, nick: r.nick, is_admin: r.is_admin };
+    store.set('token', r.token);
+    $('#authPass').value = '';
+    closeAuth();
+    toast(S.authMode === 'reg' ? 'Готово! Теперь делай прогнозы' : 'Привет, ' + r.nick + '!');
+    S.listSig = '';
+    await loadAll();
+  } catch (ex) {
+    err.textContent = ex.message; err.hidden = false;
+  } finally { btn.disabled = false; }
+}
+async function logout() {
+  const t = S.token;
+  S.token = null; S.me = null; S.my = {}; store.set('token', null);
+  S.listSig = ''; refresh();
+  toast('Ты вышел из аккаунта');
+  try { if (t) await API.rpc('logout', { p_token: t }); } catch (e) {}
+  loadAll();
+}
+
+/* ===== Шапка ===== */
+function renderHeader() {
+  const logged = !!S.me;
+  $('#loginBtn').hidden = logged || !API.ready;
+  $('#meBtn').hidden = !logged;
+  $('#authBanner').hidden = logged || !API.ready;
+  if (!logged) return;
+  const rows = rankedBoard(), mine = rows.find(r => r.player_id === S.me.id);
+  $('#meNick').textContent = S.me.nick;
+  $('#mePts').textContent = mine ? mine.pts : 0;
+  $('#meRank').textContent = mine && rows.length > 1 ? mine.rank + '-е место из ' + rows.length : 'очков';
+}
+
+/* ===== Матчи ===== */
+function renderCompChips() {
+  const opts = [['all', 'Все']].concat(ORDER.map(c => [c, COMPS[c].short]));
+  $('#compChips').innerHTML = opts.map(([k, l]) =>
+    '<button type="button" class="chip" data-comp="' + k + '" aria-pressed="' + (S.comp === k) + '">' +
+    (k === 'all' ? '' : '<i class="dot ' + k + '"></i>') + esc(l) + '</button>').join('');
+  $('#segUp').setAttribute('aria-pressed', S.seg === 'up');
+  $('#segDone').setAttribute('aria-pressed', S.seg === 'done');
+}
+function visibleMatches(now) {
+  const arr = [...S.matches.values()].filter(m => (S.comp === 'all' || m.comp === S.comp) &&
+    (S.seg === 'up' ? phase(m, now) === 'up' : phase(m, now) !== 'up'));
+  arr.sort((a, b) => (S.seg === 'up' ? 1 : -1) * (Date.parse(a.kickoff) - Date.parse(b.kickoff)) || a.id.localeCompare(b.id));
+  return arr;
+}
+function cardSig(m, now) {
+  return [phase(m, now), m.hg, m.ag, m.home, m.away, m.kickoff, S.openAdmin.has(m.id) ? 1 : 0, S.me ? 1 : 0, S.me && S.me.is_admin ? 1 : 0].join('|');
+}
+function cardHTML(m, now) {
+  const ph = phase(m, now), locked = ph !== 'up', c = COMPS[m.comp] || { short: m.comp };
+  const admin = S.me && S.me.is_admin;
+  let center;
+  if (!locked) {
+    const dis = S.me ? '' : ' disabled';
+    center = '<div class="score">' +
+      '<input id="p-' + esc(m.id) + '-h" class="g" data-side="h" inputmode="numeric" pattern="[0-9]*" maxlength="2" autocomplete="off" aria-label="Голы: ' + esc(ru(m.home)) + '"' + dis + '>' +
+      '<span class="colon" aria-hidden="true">:</span>' +
+      '<input id="p-' + esc(m.id) + '-a" class="g" data-side="a" inputmode="numeric" pattern="[0-9]*" maxlength="2" autocomplete="off" aria-label="Голы: ' + esc(ru(m.away)) + '"' + dis + '>' +
+      '</div>';
+  } else if (ph === 'ft') {
+    center = '<div class="result" aria-label="Счёт ' + m.hg + ':' + m.ag + '">' + m.hg + '<span>:</span>' + m.ag + '</div>';
+  } else {
+    center = '<div class="result pending" aria-label="Счёта пока нет">–<span>:</span>–</div>';
+  }
+  let adm = '';
+  if (admin && (locked || m.source === 'manual')) {
+    if (S.openAdmin.has(m.id)) {
+      adm = '<div class="adm">' +
+        (locked ? '<span class="note">Итоговый счёт</span>' +
+          '<input id="r-' + esc(m.id) + '-h" class="g" inputmode="numeric" pattern="[0-9]*" maxlength="2" aria-label="Итог: ' + esc(ru(m.home)) + '" value="' + (ph === 'ft' ? m.hg : '') + '">' +
+          '<span class="colon">:</span>' +
+          '<input id="r-' + esc(m.id) + '-a" class="g" inputmode="numeric" pattern="[0-9]*" maxlength="2" aria-label="Итог: ' + esc(ru(m.away)) + '" value="' + (ph === 'ft' ? m.ag : '') + '">' +
+          '<button type="button" class="btn primary" data-act="saveRes">Сохранить</button>' : '') +
+        (m.source === 'manual' ? '<button type="button" class="btn danger" data-act="delMatch">Удалить матч</button>' : '') +
+        '<button type="button" class="btn" data-act="closeAdm">Отмена</button></div>';
+    } else {
+      adm = '<div class="adm"><button type="button" class="btn link" data-act="openAdm">' +
+        (locked ? (ph === 'ft' ? 'Исправить счёт' : 'Внести счёт') : 'Изменить или удалить') + '</button></div>';
+    }
+  }
+  return '<article class="m" data-id="' + esc(m.id) + '">' +
+    '<div class="m-head"><span class="tag"><i class="dot ' + esc(m.comp) + '"></i>' + esc(c.short) + (m.round ? ' · ' + esc(m.round) : '') + '</span>' +
+    '<span class="when" data-when></span></div>' +
+    '<div class="m-row"><span class="team h">' + esc(ru(m.home)) + '</span>' + center + '<span class="team a">' + esc(ru(m.away)) + '</span></div>' +
+    '<div class="m-foot"><span class="st" data-st></span><span class="pts" data-pts hidden></span></div>' +
+    '<div class="fr" data-fr></div>' + adm + '</article>';
+}
+function renderMatches(force) {
+  const list = $('#matchList'), now = Date.now();
+  if (!API.ready) {
+    list.innerHTML = '<div class="empty"><strong>Сайт ещё не подключён к базе</strong>Впиши адрес проекта Supabase и публичный ключ в блок CONFIG в начале файла index.html.</div>';
+    $('#progress').textContent = ''; return;
+  }
+  if (!S.loaded) {
+    if (S.loadError) list.innerHTML = '<div class="empty"><strong>Не удалось загрузить матчи</strong>' + esc(S.loadError) + '<br><button type="button" class="btn" data-act="retry">Повторить</button></div>';
+    return;
+  }
+  const arr = visibleMatches(now);
+  const sig = S.seg + S.comp + '#' + arr.map(m => m.id + ':' + cardSig(m, now)).join(',');
+  if (sig !== S.listSig || force) {
+    const a = document.activeElement;
+    if (!force && a && a.tagName === 'INPUT' && list.contains(a)) { S.pendingRebuild = true; }
+    else {
+      S.listSig = sig; S.pendingRebuild = false;
+      if (!arr.length) {
+        list.innerHTML = S.seg === 'up'
+          ? '<div class="empty"><strong>Ближайших матчей нет</strong>Новые туры загружаются автоматически раз в час.</div>'
+          : '<div class="empty"><strong>Сыгранных матчей пока нет</strong>Здесь появятся итоговые счета за последние две недели и твои очки.</div>';
+      } else {
+        let html = '', lastDay = '';
+        for (const m of arr) {
+          const d = new Date(m.kickoff), k = dayKey(d);
+          if (k !== lastDay) { html += '<h3 class="day">' + esc(dayLabel(d)) + '</h3>'; lastDay = k; }
+          html += cardHTML(m, now);
+        }
+        list.innerHTML = html;
+      }
+    }
+  }
+  updateCards(now);
+  renderProgress(now);
+}
+function renderProgress(now) {
+  const el = $('#progress');
+  if (S.seg !== 'up' || !S.me || !S.loaded) { el.textContent = ''; return; }
+  const up = [...S.matches.values()].filter(m => (S.comp === 'all' || m.comp === S.comp) && phase(m, now) === 'up');
+  if (!up.length) { el.textContent = ''; return; }
+  const done = up.filter(m => validPick(S.my[m.id])).length;
+  el.innerHTML = 'Прогнозы: <b>' + done + '</b> из <b>' + up.length + '</b> ' + plural(up.length, 'матча', 'матчей', 'матчей');
+}
+function updateCards(now) {
+  now = now || Date.now();
+  const recentBy = {};
+  for (const p of S.recent) (recentBy[p.match_id] = recentBy[p.match_id] || []).push(p);
+  for (const el of document.querySelectorAll('#matchList .m')) {
+    const m = S.matches.get(el.dataset.id); if (!m) continue;
+    const ph = phase(m, now), pick = S.my[m.id], ok = validPick(pick);
+    const when = el.querySelector('[data-when]');
+    when.textContent = ph === 'live' ? 'Идёт' : ph === 'pp' ? 'Перенесён' : fTime.format(new Date(m.kickoff));
+    when.classList.toggle('live', ph === 'live');
+    const st = el.querySelector('[data-st]'), pts = el.querySelector('[data-pts]');
+    st.classList.remove('warn');
+    pts.hidden = true;
+    if (ph === 'up') {
+      const ih = el.querySelector('[data-side=h]'), ia = el.querySelector('[data-side=a]');
+      const act = document.activeElement;
+      if (ih && ia && act !== ih && act !== ia && !S.partial.has(m.id)) { ih.value = ok ? pick[0] : ''; ia.value = ok ? pick[1] : ''; }
+      el.classList.toggle('has-pick', ok);
+      const left = until(Date.parse(m.kickoff) - now);
+      if (!S.me) st.textContent = 'Войди, чтобы сделать прогноз · ' + left;
+      else if (S.partial.has(m.id)) { st.textContent = 'Укажи голы обеих команд'; st.classList.add('warn'); }
+      else if (ok) st.innerHTML = 'Твой прогноз <b>' + pick[0] + ':' + pick[1] + '</b> · ' + esc(left);
+      else st.textContent = 'Сделай прогноз · приём ' + left.replace('через', 'закроется через');
+    } else {
+      const mine = ok ? 'твой прогноз <b>' + pick[0] + ':' + pick[1] + '</b>' : 'без прогноза';
+      if (ph === 'live') st.innerHTML = 'Матч идёт · ' + mine;
+      else if (ph === 'wait') st.innerHTML = 'Ждём итоговый счёт · ' + mine;
+      else if (ph === 'pp') st.innerHTML = 'Матч перенесён · ' + mine;
+      else st.innerHTML = ok ? 'Твой прогноз <b>' + pick[0] + ':' + pick[1] + '</b>' : 'Без прогноза';
+      const s = score(pick, m);
+      if (s !== null) { pts.hidden = false; pts.className = 'pts p' + s; pts.textContent = '+' + s; }
+    }
+    const fr = el.querySelector('[data-fr]');
+    if (ph === 'up') {
+      const cnt = (S.counts[m.id] || 0) - (ok ? 1 : 0);
+      fr.textContent = cnt > 0 ? 'Друзья уже сделали прогнозов: ' + cnt + '. Их видно после начала матча.' : '';
+    } else {
+      const others = (recentBy[m.id] || []).filter(p => !S.me || p.player_id !== S.me.id);
+      fr.innerHTML = others.map(p => {
+        const s = score([p.hg, p.ag], m), nk = nickOf(p.player_id);
+        return '<span class="fp">' + avatar(nk) + esc(nk) + ' <b>' + p.hg + ':' + p.ag + '</b>' + (s !== null ? ' <i>+' + s + '</i>' : '') + '</span>';
+      }).join('');
+    }
+  }
+}
+
+/* Ввод прогноза: сохраняется сам через полсекунды после ввода обоих чисел */
+function onPickInput(e) {
+  const inp = e.target; if (!inp.matches('.g[data-side]')) return;
+  const v = inp.value.replace(/\D/g, '').slice(0, 2); if (v !== inp.value) inp.value = v;
+  const card = inp.closest('.m'), id = card.dataset.id;
+  const ih = card.querySelector('[data-side=h]'), ia = card.querySelector('[data-side=a]');
+  const m = S.matches.get(id); if (!m || phase(m, Date.now()) !== 'up') return;
+  if (inp === ih && v.length === 1 && ia.value === '') ia.focus();
+  const h = ih.value, a = ia.value;
+  if (h !== '' && a !== '') { S.my[id] = [parseInt(h, 10), parseInt(a, 10)]; S.partial.delete(id); scheduleSave(id); }
+  else if (h === '' && a === '') { delete S.my[id]; S.partial.delete(id); scheduleSave(id); }
+  else S.partial.add(id);
+  updateCards(); renderProgress(Date.now());
+}
+function scheduleSave(id) {
+  clearTimeout(S.saveT[id]);
+  S.saveT[id] = setTimeout(() => { delete S.saveT[id]; savePick(id); }, 600);
+}
+async function savePick(id) {
+  if (!S.token) return;
+  if (S.saving.has(id)) { S.pendingSave.add(id); return; }
+  S.saving.add(id);
+  const p = S.my[id];
+  try {
+    await API.rpc('save_pick', { p_token: S.token, p_match: id, p_hg: p ? p[0] : null, p_ag: p ? p[1] : null });
+    toast(p ? 'Прогноз сохранён' : 'Прогноз удалён');
+  } catch (e) {
+    toast(e.message);
+    if (/Войди заново/.test(e.message)) { S.token = null; S.me = null; store.set('token', null); S.listSig = ''; refresh(); }
+  } finally {
+    S.saving.delete(id);
+    if (S.pendingSave.has(id)) { S.pendingSave.delete(id); savePick(id); }
+  }
+}
+
+/* Кнопки администратора в карточках */
+async function onMatchClick(e) {
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  if (b.dataset.act === 'retry') { loadAll(); return; }
+  const card = b.closest('.m'); if (!card) return;
+  const id = card.dataset.id;
+  if (b.dataset.act === 'openAdm') { S.openAdmin.add(id); renderMatches(true); return; }
+  if (b.dataset.act === 'closeAdm') { S.openAdmin.delete(id); renderMatches(true); return; }
+  if (b.dataset.act === 'saveRes') {
+    const h = document.getElementById('r-' + id + '-h').value.trim(), a = document.getElementById('r-' + id + '-a').value.trim();
+    if (!/^\d{1,2}$/.test(h) || !/^\d{1,2}$/.test(a)) { toast('Введи счёт числами, например 2 и 1'); return; }
+    b.disabled = true;
+    try {
+      await API.rpc('admin_set_result', { p_token: S.token, p_match: id, p_hg: parseInt(h, 10), p_ag: parseInt(a, 10) });
+      S.openAdmin.delete(id); toast('Счёт сохранён, очки пересчитаны'); loadAll();
+    } catch (err) { toast(err.message); b.disabled = false; }
+  }
+  if (b.dataset.act === 'delMatch') {
+    if (b.dataset.confirm !== '1') { b.dataset.confirm = '1'; b.textContent = 'Точно удалить?'; return; }
+    b.disabled = true;
+    try { await API.rpc('admin_delete_match', { p_token: S.token, p_match: id }); S.openAdmin.delete(id); toast('Матч удалён'); loadAll(); }
+    catch (err) { toast(err.message); b.disabled = false; }
+  }
+}
+
+/* ===== Таблицы ===== */
+function computedRows(st, results) {
+  // База таблицы + результаты, внесённые после даты base_until
+  // Названия приводим к русским, чтобы «Зенит» из таблицы и «Zenit» из результатов были одной командой
+  const map = new Map();
+  st.rows.forEach((r, i) => map.set(ru(r[1]), { team: ru(r[1]), p: r[2], w: r[3], d: r[4], l: r[5], pts: r[6], o: i }));
+  const get = (name) => { const t = ru(name); if (!map.has(t)) map.set(t, { team: t, p: 0, w: 0, d: 0, l: 0, pts: 0, o: 999 }); return map.get(t); };
+  for (const m of results) {
+    if (m.hg == null || m.ag == null) continue;
+    const h = get(m.home), a = get(m.away);
+    h.p++; a.p++;
+    if (m.hg > m.ag) { h.w++; h.pts += 3; a.l++; }
+    else if (m.hg < m.ag) { a.w++; a.pts += 3; h.l++; }
+    else { h.d++; a.d++; h.pts++; a.pts++; }
+  }
+  const arr = [...map.values()].sort((x, y) => y.pts - x.pts || y.w - x.w || x.o - y.o);
+  return arr.map((r, i) => [i + 1, r.team, r.p, r.w, r.d, r.l, r.pts]);
+}
+function renderTables() {
+  $('#tblChips').innerHTML = ORDER.map(k =>
+    '<button type="button" class="chip" data-tcomp="' + k + '" aria-pressed="' + (S.tcomp === k) + '"><i class="dot ' + k + '"></i>' + esc(COMPS[k].name) + '</button>').join('');
+  const body = $('#tblBody');
+  if (!API.ready) { body.innerHTML = '<div class="empty"><strong>Сайт ещё не подключён к базе</strong></div>'; return; }
+  if (!S.loaded) { body.innerHTML = '<div class="empty"><strong>Загружаю таблицу…</strong></div>'; return; }
+  const st = S.standings[S.tcomp];
+  if (!st || !Array.isArray(st.rows) || !st.rows.length) {
+    body.innerHTML = '<div class="empty"><strong>Таблицы пока нет</strong>Она появится после ближайшего автообновления.</div>'; return;
+  }
+  const rows = st.base_until ? computedRows(st, S.rplResults) : st.rows;
+  const zones = ZONES[S.tcomp] || [];
+  const zoneOf = (pos) => { const z = zones.find(z => pos >= z[0] && pos <= z[1]); return z ? z[2] : ''; };
+  let html = '';
+  rows.forEach((r, i) => {
+    const z = zoneOf(i + 1);
+    html += '<tr' + (z ? ' class="z-' + z + '"' : '') + '><td class="rk">' + r[0] + '</td><td class="tm">' + esc(ru(r[1])) + '</td><td>' + r[2] + '</td><td>' + r[3] + '</td><td>' + r[4] + '</td><td>' + r[5] + '</td><td class="pt">' + r[6] + '</td></tr>';
+  });
+  body.innerHTML = '<div class="tbl-wrap"><table><thead><tr><th>#</th><th class="tm">Команда</th><th title="Игры">И</th><th title="Победы">В</th><th title="Ничьи">Н</th><th title="Поражения">П</th><th title="Очки">О</th></tr></thead><tbody>' + html + '</tbody></table></div>' +
+    (zones.length ? '<ul class="legend">' + zones.map(z => '<li><i style="background:' + ZONE_COLOR[z[2]] + '"></i>' + esc(z[3]) + '</li>').join('') + '</ul>' : '') +
+    '<p class="note">' + esc(st.note || '') + ' Обновлено ' + fStamp.format(new Date(st.updated_at)) + '.</p>';
+}
+
+/* ===== Рейтинг ===== */
+function renderRating() {
+  const box = $('#board');
+  $('#accountPanel').hidden = !S.me;
+  $('#adminPanel').hidden = !(S.me && S.me.is_admin);
+  if (S.me) $('#accNick').textContent = S.me.nick;
+  if (!API.ready) { box.innerHTML = '<div class="empty"><strong>Сайт ещё не подключён к базе</strong></div>'; return; }
+  if (!S.loaded) { box.innerHTML = '<div class="empty"><strong>Загружаю рейтинг…</strong></div>'; return; }
+  const rows = rankedBoard();
+  if (!rows.length) {
+    box.innerHTML = '<div class="empty"><strong>Пока никто не играет</strong>Зарегистрируйся и сделай первый прогноз.' +
+      (S.me ? '' : '<br><button type="button" class="btn primary" data-open-auth>Войти</button>') + '</div>';
+  } else {
+    box.innerHTML = '<div class="board">' + rows.map(r =>
+      '<div class="row' + (S.me && r.player_id === S.me.id ? ' me' : '') + '"><span class="rk">' + r.rank + '</span>' + avatar(r.nick) +
+      '<span class="nm">' + esc(r.nick) + (S.me && r.player_id === S.me.id ? ' (ты)' : '') +
+      '<span class="sub">точных: ' + r.exact + ' · прогнозов: ' + r.total + '</span></span>' +
+      '<span class="tot">' + r.pts + '</span></div>').join('') + '</div>';
+  }
+  if (S.me && S.me.is_admin) {
+    const s = S.sync || {};
+    $('#syncInfo').textContent = s.last_sync
+      ? 'Последнее автообновление: ' + fStamp.format(new Date(s.last_sync)) + '. Следующее — в течение часа.' + (s.requested ? ' Запрошено обновление, данные придут в течение 10 минут.' : '')
+      : 'Автообновление ещё не запускалось.';
+    const log = $('#syncLog'); log.hidden = !s.log; log.textContent = s.log || '';
+  }
+}
+
+/* ===== Где смотреть ===== */
+function renderWatch() {
+  const sel = $('#country');
+  if (!sel.options.length) sel.innerHTML = Object.entries(WATCH).map(([k, c]) => '<option value="' + k + '">' + esc(c.name) + '</option>').join('');
+  sel.value = S.country;
+  const c = WATCH[S.country] || WATCH.other;
+  const ruBits = []; let html = '';
+  for (const k of ORDER) {
+    const v = c[k]; let inner;
+    if (Array.isArray(v)) {
+      const list = v.slice().sort((a, b) => (b.ru || 0) - (a.ru || 0));
+      list.filter(b => b.ru).forEach(b => ruBits.push(b.n + ' (' + COMPS[k].short + ')'));
+      inner = list.map(b => '<div class="bc"><span class="bc-name">' + esc(b.n) +
+        (b.ru ? '<span class="lang">RU</span>' : (b.lang ? '<span class="lang other">' + esc(b.lang) + '</span>' : '')) + '</span>' +
+        (b.u ? '<a href="' + b.u + '" target="_blank" rel="noopener">Открыть ↗</a>' : '') + '</div>').join('');
+    } else if (v === 'none') inner = '<div class="none">Официального вещателя в этой стране нет.</div>';
+    else if (v === 'tbd') inner = '<div class="none">Вещатель на этот сезон пока не объявлен. <a href="' + OFFICIAL[k] + '" target="_blank" rel="noopener">Список лиги ↗</a></div>';
+    else inner = '<div class="none">Проверенных данных по этой стране нет. <a href="' + OFFICIAL[k] + '" target="_blank" rel="noopener">Официальный список ↗</a></div>';
+    html += '<div class="wc"><h3><i class="dot ' + k + '"></i>' + esc(COMPS[k].name) + '</h3>' + inner + '</div>';
+  }
+  $('#watchList').innerHTML = html;
+  const sum = $('#ruSum');
+  if (S.country === 'other') sum.textContent = 'Выбери страну из списка. Если твоей страны нет, найди вещателя в официальных списках ниже.';
+  else if (ruBits.length) sum.innerHTML = '<b>На русском:</b> ' + esc([...new Set(ruBits)].join(', ')) + '.';
+  else sum.textContent = 'Подтверждённых русскоязычных трансляций в этой стране не нашлось. Ниже — официальные вещатели на местном языке.';
+}
+
+/* ===== Навигация и общие ===== */
+const VIEWS = ['matches', 'tables', 'rating', 'watch'];
+function setView(v, keepScroll) {
+  if (!VIEWS.includes(v)) v = 'matches';
+  S.view = v; store.set('view', v);
+  for (const k of VIEWS) {
+    $('#v-' + k).hidden = k !== v;
+    const t = $('#tab-' + k); if (k === v) t.setAttribute('aria-current', 'page'); else t.removeAttribute('aria-current');
+  }
+  if (v === 'tables') renderTables();
+  if (v === 'rating') renderRating();
+  if (v === 'watch') renderWatch();
+  if (!keepScroll) window.scrollTo(0, 0);
+}
+function refresh() {
+  renderHeader(); renderMatches();
+  if (S.view === 'tables') renderTables();
+  if (S.view === 'rating') renderRating();
+}
+let toastT = 0;
+function toast(msg) {
+  const t = $('#toast'); t.textContent = msg; t.classList.add('on');
+  clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 2400);
+}
+
+/* ===== События ===== */
+document.querySelector('.tabbar').addEventListener('click', e => { const b = e.target.closest('[data-view]'); if (b) setView(b.dataset.view); });
+$('#compChips').addEventListener('click', e => { const b = e.target.closest('[data-comp]'); if (!b) return; S.comp = b.dataset.comp; store.set('comp', S.comp); renderCompChips(); renderMatches(true); });
+document.querySelector('#v-matches .seg').addEventListener('click', e => { const b = e.target.closest('[data-seg]'); if (!b) return; S.seg = b.dataset.seg; renderCompChips(); renderMatches(true); });
+$('#tblChips').addEventListener('click', e => { const b = e.target.closest('[data-tcomp]'); if (!b) return; S.tcomp = b.dataset.tcomp; store.set('tcomp', S.tcomp); renderTables(); });
+$('#country').addEventListener('change', e => { S.country = e.target.value; store.set('country', S.country); renderWatch(); });
+const list = $('#matchList');
+list.addEventListener('input', onPickInput);
+list.addEventListener('click', onMatchClick);
+list.addEventListener('focusout', e => {
+  if (!S.pendingRebuild) return;
+  const next = e.relatedTarget;
+  if (next && next.tagName === 'INPUT' && list.contains(next)) return;
+  setTimeout(() => renderMatches(), 0);
+});
+list.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.matches('.g')) e.target.blur(); });
+document.addEventListener('click', e => { if (e.target.closest('[data-open-auth]')) openAuth('login'); });
+$('#loginBtn').addEventListener('click', () => openAuth('login'));
+$('#meBtn').addEventListener('click', () => setView('rating'));
+$('#authClose').addEventListener('click', closeAuth);
+$('#authSheet').addEventListener('click', e => { if (e.target === $('#authSheet')) closeAuth(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#authSheet').hidden) closeAuth(); });
+$('#modeLogin').addEventListener('click', () => setAuthMode('login'));
+$('#modeReg').addEventListener('click', () => setAuthMode('reg'));
+$('#authForm').addEventListener('submit', submitAuth);
+$('#logoutBtn').addEventListener('click', logout);
+$('#copyLink').addEventListener('click', async () => {
+  const url = location.href.split('#')[0];
+  try { await navigator.clipboard.writeText(url); toast('Ссылка скопирована'); }
+  catch (e) { toast(url); }
+});
+$('#syncBtn').addEventListener('click', async (e) => {
+  const b = e.currentTarget; b.disabled = true;
+  try { await API.rpc('admin_request_sync', { p_token: S.token }); toast('Обновление запрошено, данные придут в течение 10 минут'); loadAll(); }
+  catch (err) { toast(err.message); }
+  finally { b.disabled = false; }
+});
+$('#addForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const d = $('#addDate').value, t = $('#addTime').value, home = $('#addHome').value.trim(), away = $('#addAway').value.trim();
+  if (!d || !t) { toast('Укажи дату и время'); return; }
+  if (!home || !away) { toast('Укажи обе команды'); return; }
+  const kickoff = new Date(d + 'T' + t);
+  if (isNaN(kickoff)) { toast('Не получилось прочитать дату'); return; }
+  const btn = $('#addBtn'); btn.disabled = true;
+  try {
+    await API.rpc('admin_add_match', { p_token: S.token, p_comp: $('#addComp').value, p_round: $('#addRound').value.trim(), p_kickoff: kickoff.toISOString(), p_home: home, p_away: away });
+    toast('Матч добавлен'); $('#addHome').value = ''; $('#addAway').value = ''; loadAll();
+  } catch (err) { toast(err.message); }
+  finally { btn.disabled = false; }
+});
+document.addEventListener('visibilitychange', () => { if (!document.hidden) loadAll(); });
+
+/* ===== Старт ===== */
+(async function start() {
+  S.comp = store.get('comp', 'all'); if (S.comp !== 'all' && !COMPS[S.comp]) S.comp = 'all';
+  S.tcomp = store.get('tcomp', 'ucl'); if (!COMPS[S.tcomp]) S.tcomp = 'ucl';
+  let tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+  const guess = /^(Europe\/(Moscow|Kaliningrad|Samara|Volgograd|Saratov|Ulyanovsk|Astrakhan|Kirov)|Asia\/(Yekaterinburg|Omsk|Novosibirsk|Barnaul|Tomsk|Novokuznetsk|Krasnoyarsk|Irkutsk|Chita|Yakutsk|Vladivostok|Sakhalin|Magadan|Kamchatka|Anadyr))$/.test(tz) ? 'ru'
+    : /^(America\/(New_York|Chicago|Denver|Los_Angeles|Phoenix|Anchorage|Detroit|Boise|Indiana\/.*)|Pacific\/Honolulu)$/.test(tz) ? 'us'
+    : /^Asia\/(Almaty|Qostanay|Aqtobe|Aqtau|Atyrau|Oral|Qyzylorda)$/.test(tz) ? 'kz'
+    : (TZ_COUNTRY[tz] || 'other');
+  S.country = store.get('country', guess); if (!WATCH[S.country]) S.country = 'other';
+  renderCompChips();
+  const h = (location.hash || '').replace('#', '');
+  setView(VIEWS.includes(h) ? h : store.get('view', 'matches'), true);
+  refresh();
+  await restoreSession();
+  refresh();
+  await loadAll();
+  setInterval(() => { if (!document.hidden) loadAll(); }, 60000);
+  setInterval(() => { renderMatches(); }, 30000);
+})();
+</script>
+</body>
+</html>
