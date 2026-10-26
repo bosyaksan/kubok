@@ -227,6 +227,67 @@ select { padding-right: 38px; background-image: linear-gradient(45deg, transpare
   .team { font-size: 14px; }
   .me-meta { display: none; }
 }
+
+/* ===== Версия 2 ===== */
+.tabbar .wrap { grid-template-columns: repeat(5, 1fr); }
+.tab { font-size: 10.5px; }
+.row-tools { display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 30px; }
+.pill { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 500; cursor: pointer; flex-shrink: 0; }
+.pill[aria-pressed="true"] { background: var(--yellow); color: var(--on-yellow); border-color: var(--yellow); }
+.m.is-joker { border-color: var(--yellow); box-shadow: 0 0 0 1px var(--yellow) inset; }
+.x2 { font-family: var(--f-display); font-weight: 700; font-size: 11px; background: var(--yellow); color: var(--on-yellow); border-radius: 5px; padding: 1px 6px; }
+.m-tools { display: flex; flex-wrap: wrap; gap: 8px; }
+.m-tools:empty { display: none; }
+.jk { border: 1px dashed var(--line); background: transparent; border-radius: 8px; padding: 6px 10px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--muted); }
+.jk[aria-pressed="true"] { border-style: solid; border-color: var(--yellow); background: color-mix(in srgb, var(--yellow) 22%, var(--surface)); color: var(--ink); }
+.result.live { color: var(--red); }
+.result.live span { color: var(--red); opacity: .6; }
+.prov { color: var(--muted); }
+.fp .x2 { font-size: 10px; padding: 0 5px; }
+
+/* Рейтинг: периоды */
+.pnav { display: grid; grid-template-columns: 40px 1fr 40px; align-items: center; gap: 8px; }
+.pnav b { text-align: center; font-weight: 600; }
+.arrow { width: 40px; height: 36px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); font-size: 18px; cursor: pointer; line-height: 1; }
+.arrow:disabled { opacity: .35; cursor: default; }
+button.row { width: 100%; border: 0; border-bottom: 1px solid var(--line); background: transparent; text-align: left; cursor: pointer; font: inherit; color: inherit; }
+button.row:last-child { border-bottom: 0; }
+button.row.me { background: color-mix(in srgb, var(--yellow) 14%, var(--surface)); }
+.lead { display: inline-block; margin-top: 2px; font-size: 11px; font-weight: 700; color: var(--on-yellow); background: var(--yellow); border-radius: 5px; padding: 1px 6px; }
+
+/* Статистика */
+.stat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.stat { background: var(--surface-2); border-radius: 12px; padding: 10px 12px; display: grid; gap: 2px; }
+.stat b { font-family: var(--f-display); font-weight: 700; font-size: 22px; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12px; color: var(--muted); }
+.bars { width: 100%; height: auto; display: block; }
+.bars text { fill: var(--muted); font-size: 10px; font-family: var(--f-body); }
+.bars .val { fill: var(--ink); font-weight: 600; }
+.bars rect.bar { fill: var(--brand); }
+.bars rect.bar.now { fill: var(--yellow); }
+.bars line { stroke: var(--line); }
+.hist { display: grid; gap: 0; }
+.hist div { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 10px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+.hist div:last-child { border-bottom: 0; }
+.hist .mt { min-width: 0; overflow-wrap: anywhere; }
+.hist .mt small { display: block; color: var(--muted); font-size: 11px; }
+.hist .sc { font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; }
+.comp-line { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.comp-line:last-child { border-bottom: 0; }
+.comp-line span { display: inline-flex; align-items: center; gap: 8px; }
+.sec { margin: 4px 0 0; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+
+/* Сезон */
+.lq { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; gap: 10px; }
+.lq-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.lq-head h3 { margin: 0; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+.lq .when-line { margin: 0; font-size: 13px; color: var(--muted); }
+.lq .mine { margin: 0; font-size: 14px; }
+.lq .ok { color: var(--win); font-weight: 600; }
+.answers { display: flex; flex-wrap: wrap; gap: 6px; font-size: 12px; }
+.answers .fp.hit { background: color-mix(in srgb, var(--win) 25%, var(--surface)); }
+.lq .adm { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.lq .adm .full { grid-column: 1 / -1; }
 </style>
 </head>
 <body>
@@ -235,7 +296,7 @@ select { padding-right: 38px; background-image: linear-gradient(45deg, transpare
   <div class="wrap">
     <div class="brand"><b>Кубок прогнозов</b><span>ЛЧ · АПЛ · РПЛ · Ла Лига</span></div>
     <button type="button" class="login-btn" id="loginBtn">Войти</button>
-    <button type="button" class="me" id="meBtn" hidden aria-label="Мой профиль и рейтинг">
+    <button type="button" class="me" id="meBtn" hidden aria-label="Моя статистика">
       <span class="me-meta"><strong id="meNick"></strong><span id="meRank"></span></span>
       <span class="ycard" id="mePts">0</span>
     </button>
@@ -255,8 +316,18 @@ select { padding-right: 38px; background-image: linear-gradient(45deg, transpare
       <button type="button" id="segUp" data-seg="up" aria-pressed="true">Предстоящие</button>
       <button type="button" id="segDone" data-seg="done" aria-pressed="false">Сыгранные</button>
     </div>
-    <p class="progress" id="progress"></p>
+    <div class="row-tools">
+      <p class="progress" id="progress"></p>
+      <button type="button" class="pill" id="onlyEmpty" aria-pressed="false" hidden>Без прогноза</button>
+    </div>
     <div id="matchList"><div class="empty"><strong>Загружаю матчи…</strong>Расписание и прогнозы друзей появятся через секунду.</div></div>
+  </section>
+
+  <!-- СЕЗОН -->
+  <section class="view" id="v-season" aria-labelledby="t-season" hidden>
+    <h2 class="view-title" id="t-season">Прогнозы на сезон</h2>
+    <p class="lede">Угадай чемпионов до окончания приёма. За верный ответ очки добавятся к общему рейтингу в конце сезона. Ответы друзей откроются, когда приём закроется.</p>
+    <div id="longList" class="view"></div>
   </section>
 
   <!-- ТАБЛИЦЫ -->
@@ -269,13 +340,25 @@ select { padding-right: 38px; background-image: linear-gradient(45deg, transpare
   <!-- РЕЙТИНГ -->
   <section class="view" id="v-rating" aria-labelledby="t-rating" hidden>
     <h2 class="view-title" id="t-rating">Рейтинг друзей</h2>
+    <div class="seg" style="grid-template-columns: repeat(3, 1fr)" role="group" aria-label="Период">
+      <button type="button" id="rWeek" data-rview="week" aria-pressed="true">Неделя</button>
+      <button type="button" id="rMonth" data-rview="month" aria-pressed="false">Месяц</button>
+      <button type="button" id="rSeason" data-rview="season" aria-pressed="false">Сезон</button>
+    </div>
+    <div class="pnav" id="pnav">
+      <button type="button" class="arrow" id="pPrev" aria-label="Предыдущий период">‹</button>
+      <b id="pLabel"></b>
+      <button type="button" class="arrow" id="pNext" aria-label="Следующий период">›</button>
+    </div>
     <div id="board"></div>
+    <p class="small">Нажми на игрока, чтобы открыть его статистику.</p>
     <div class="rules">
       <h3>Как начисляются очки</h3>
       <div class="rule"><span class="pts p3">3</span><span>Точный счёт</span></div>
       <div class="rule"><span class="pts p2">2</span><span>Угадана разница мячей или ничья</span></div>
       <div class="rule"><span class="pts p1">1</span><span>Угадан только победитель</span></div>
-      <p>Пример: прогноз 2:1, матч закончился 3:2 — разница та же, 2 очка. Прогноз закрывается в момент начала матча. Прогнозы друзей видны после стартового свистка.</p>
+      <div class="rule"><span class="x2">×2</span><span>Джокер: раз в неделю (пн–вс) удваивает очки за один матч</span></div>
+      <p>Пример: прогноз 2:1, матч закончился 3:2 — разница та же, 2 очка, а с джокером 4. Прогноз закрывается в момент начала матча. Прогнозы друзей видны после стартового свистка. Очки за прогнозы на сезон идут только в общий рейтинг.</p>
     </div>
     <div class="panel" id="accountPanel" hidden>
       <div class="account"><span>Ты вошёл как <b id="accNick"></b></span><button type="button" class="btn" id="logoutBtn">Выйти</button></div>
@@ -300,7 +383,7 @@ select { padding-right: 38px; background-image: linear-gradient(45deg, transpare
         <div class="field"><label for="addAway">Гости</label><input class="input" id="addAway" placeholder="Спартак"></div>
         <button type="submit" class="btn primary big full" id="addBtn">Добавить матч</button>
       </form>
-      <p>Счёт сыгранного матча вносится на вкладке «Матчи» → «Сыгранные», кнопка «Внести счёт».</p>
+      <p>Счёт сыгранного матча вносится на вкладке «Матчи» → «Сыгранные», кнопка «Внести счёт». Ответы на сезон и дату окончания приёма — на вкладке «Сезон».</p>
     </div>
   </section>
 
@@ -332,6 +415,10 @@ select { padding-right: 38px; background-image: linear-gradient(45deg, transpare
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5l4 2.9-1.5 4.7h-5L8 10.4z"/><path d="M12 3v4.5M16 10.4l4.3-1.4M14.5 15.1l2.6 3.7M9.5 15.1l-2.6 3.7M8 10.4L3.7 9"/></svg>
       Матчи
     </button>
+    <button type="button" class="tab" id="tab-season" data-view="season">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4l-5.2 2.7 1-5.8L3.5 9.2l5.9-.9z"/></svg>
+      Сезон
+    </button>
     <button type="button" class="tab" id="tab-tables" data-view="tables">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 9h17M3.5 14h17M8.5 4v16"/></svg>
       Таблицы
@@ -342,7 +429,7 @@ select { padding-right: 38px; background-image: linear-gradient(45deg, transpare
     </button>
     <button type="button" class="tab" id="tab-watch" data-view="watch">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 3l4 3 4-3M8 21h8"/><path d="M10.5 9.5v5l4-2.5z"/></svg>
-      Где смотреть
+      Трансляции
     </button>
   </div>
 </nav>
@@ -350,7 +437,7 @@ select { padding-right: 38px; background-image: linear-gradient(45deg, transpare
 <!-- Окно входа / регистрации -->
 <div class="sheet" id="authSheet" hidden role="dialog" aria-modal="true" aria-labelledby="authTitle">
   <form class="sheet-card" id="authForm" novalidate>
-    <div class="sheet-head"><h2 id="authTitle">Вход</h2><button type="button" class="x" id="authClose" aria-label="Закрыть">×</button></div>
+    <div class="sheet-head"><h2 id="authTitle">Вход</h2><button type="button" class="x" data-close aria-label="Закрыть">×</button></div>
     <div class="seg" role="group" aria-label="Вход или регистрация">
       <button type="button" id="modeLogin" aria-pressed="true">Вход</button>
       <button type="button" id="modeReg" aria-pressed="false">Регистрация</button>
@@ -361,6 +448,14 @@ select { padding-right: 38px; background-image: linear-gradient(45deg, transpare
     <button type="submit" class="btn primary big" id="authSubmit">Войти</button>
     <p class="small" id="authHint">Нет аккаунта? Нажми «Регистрация» — нужен только ник и пароль, почта не нужна.</p>
   </form>
+</div>
+
+<!-- Окно статистики игрока -->
+<div class="sheet" id="statsSheet" hidden role="dialog" aria-modal="true" aria-labelledby="statsTitle">
+  <div class="sheet-card">
+    <div class="sheet-head"><h2 id="statsTitle">Статистика</h2><button type="button" class="x" data-close aria-label="Закрыть">×</button></div>
+    <div id="statsBody" class="view"></div>
+  </div>
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -502,9 +597,11 @@ const TZ_COUNTRY = {
 
 /* ===== Состояние ===== */
 const S = {
-  view: 'matches', comp: 'all', seg: 'up', tcomp: 'ucl', country: 'other',
+  view: 'matches', comp: 'all', seg: 'up', tcomp: 'ucl', country: 'other', onlyEmpty: false,
+  rView: 'week', rOff: 0, periodBoard: null, periodErr: '',
   token: null, me: null,
-  matches: new Map(), standings: {}, rplResults: [], board: [], recent: [], counts: {}, my: {},
+  matches: new Map(), standings: {}, rplResults: [], board: [], recent: [], counts: {}, my: {}, myJ: {},
+  longQ: [], myLong: {}, allLong: [],
   sync: null, loaded: false, loadError: '',
   partial: new Set(), saveT: {}, saving: new Set(), pendingSave: new Set(),
   listSig: '', pendingRebuild: false, openAdmin: new Set(), authMode: 'login'
@@ -517,6 +614,7 @@ const store = {
 };
 function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
 function plural(k, one, few, many) { const a = Math.abs(k) % 100, b = a % 10; if (a > 10 && a < 20) return many; if (b > 1 && b < 5) return few; if (b === 1) return one; return many; }
+function cap(s) { return s ? s[0].toUpperCase() + s.slice(1) : s; }
 
 /* ===== Связь с базой ===== */
 const API = {
@@ -542,8 +640,10 @@ const API = {
 /* ===== Время ===== */
 const fTime = new Intl.DateTimeFormat('ru-RU', { hour: '2-digit', minute: '2-digit' });
 const fDay = new Intl.DateTimeFormat('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' });
-const fDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long' });
 const fStamp = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
+const fShort = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'short' });
+const fShortUTC = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+const fMonthUTC = new Intl.DateTimeFormat('ru-RU', { month: 'long', timeZone: 'UTC' });
 function dayKey(d) { return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate(); }
 function dayLabel(d) {
   const now = new Date(), t = new Date(now), y = new Date(now);
@@ -561,6 +661,12 @@ function until(ms) {
   const d = Math.round(h / 24);
   return 'через ' + d + ' ' + plural(d, 'день', 'дня', 'дней');
 }
+// Неделя для джокера и рейтинга: понедельник 00:00 по UTC (как в базе).
+function weekStartUTC(date, offsetWeeks) {
+  const d = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+  d.setUTCDate(d.getUTCDate() - (d.getUTCDay() + 6) % 7 + 7 * (offsetWeeks || 0));
+  return d;
+}
 // up — можно делать прогноз; live — идёт; wait — ждём счёт; ft — завершён; pp — перенесён
 function phase(m, now) {
   if (m.status === 'finished') return 'ft';
@@ -573,18 +679,24 @@ function phase(m, now) {
 
 /* ===== Очки ===== */
 function validPick(p) { return Array.isArray(p) && p.length === 2 && Number.isInteger(p[0]) && Number.isInteger(p[1]); }
-function score(p, m) {
-  if (m.status !== 'finished' || !validPick(p) || m.hg == null || m.ag == null) return null;
-  const [ph, pa] = p, rh = m.hg, ra = m.ag;
+// Базовые очки за прогноз p при счёте rh:ra (без джокера)
+function basePts(p, rh, ra) {
+  if (!validPick(p) || rh == null || ra == null) return null;
+  const [ph, pa] = p;
   if (ph === rh && pa === ra) return 3;
   if (ph - pa === rh - ra) return 2;
   if (Math.sign(ph - pa) === Math.sign(rh - ra)) return 1;
   return 0;
 }
-function rankedBoard() {
-  const rows = S.board.slice().sort((a, b) => b.pts - a.pts || b.exact - a.exact || b.total - a.total || a.nick.localeCompare(b.nick));
-  let rank = 0, prev = null;
-  rows.forEach((r, i) => { if (!prev || r.pts !== prev.pts || r.exact !== prev.exact) rank = i + 1; r.rank = rank; prev = r; });
+function score(p, m, joker) {
+  if (m.status !== 'finished') return null;
+  const b = basePts(p, m.hg, m.ag);
+  return b === null ? null : b * (joker ? 2 : 1);
+}
+function rank(rows) {
+  rows = rows.slice().sort((a, b) => b.pts - a.pts || b.exact - a.exact || (b.total || 0) - (a.total || 0) || a.nick.localeCompare(b.nick));
+  let r = 0, prev = null;
+  rows.forEach((x, i) => { if (!prev || x.pts !== prev.pts || x.exact !== prev.exact) r = i + 1; x.rank = r; prev = x; });
   return rows;
 }
 function nickOf(id) { const r = S.board.find(x => x.player_id === id); return r ? r.nick : 'Игрок'; }
@@ -600,14 +712,18 @@ async function loadAll() {
   loading = true;
   try {
     const since = new Date(Date.now() - 14 * 864e5).toISOString();
-    const [m, board, recent, counts, st, mine, sync] = await Promise.all([
+    const [m, board, recent, counts, st, mine, sync, lq, lp, myl] = await Promise.all([
       API.get('matches?select=id,comp,round,kickoff,home,away,hg,ag,status,source&kickoff=gte.' + encodeURIComponent(since) + '&order=kickoff.asc&limit=1000'),
       API.rpc('leaderboard'),
       API.rpc('recent_picks', { p_days: 14 }),
       API.rpc('pick_counts'),
       API.get('standings?select=comp,rows,note,base_until,updated_at'),
       S.token ? API.rpc('my_picks', { p_token: S.token }) : Promise.resolve(null),
-      S.me && S.me.is_admin ? API.rpc('sync_status') : Promise.resolve(null)
+      S.me && S.me.is_admin ? API.rpc('sync_status').catch(() => null) : Promise.resolve(null),
+      // сезонные прогнозы — необязательная часть: если что-то не так, матчи всё равно загрузятся
+      API.get('long_questions?select=id,title,comp,deadline,points,answer,sort&order=sort.asc').catch(() => null),
+      API.get('long_picks?select=player_id,question_id,answer&limit=1000').catch(() => null),
+      S.token ? API.rpc('my_long_picks', { p_token: S.token }).catch(() => null) : Promise.resolve(null)
     ]);
     S.matches = new Map((m || []).map(x => [x.id, x]));
     S.board = board || [];
@@ -615,9 +731,13 @@ async function loadAll() {
     S.counts = {}; for (const c of counts || []) S.counts[c.match_id] = c.n;
     S.standings = {}; for (const s of st || []) S.standings[s.comp] = s;
     if (mine && !S.saving.size && !Object.keys(S.saveT).length) {
-      S.my = {}; for (const p of mine) S.my[p.match_id] = [p.hg, p.ag];
+      S.my = {}; S.myJ = {};
+      for (const p of mine) { S.my[p.match_id] = [p.hg, p.ag]; if (p.joker) S.myJ[p.match_id] = true; }
     }
+    if (!S.token) { S.my = {}; S.myJ = {}; }
     S.sync = sync;
+    S.longQ = lq || []; S.allLong = lp || [];
+    S.myLong = {}; for (const x of myl || []) S.myLong[x.question_id] = x.answer;
     const rpl = S.standings.rpl;
     S.rplResults = rpl && rpl.base_until
       ? await API.get('matches?select=home,away,hg,ag&comp=eq.rpl&status=eq.finished&kickoff=gte.' + encodeURIComponent(rpl.base_until) + '&limit=1000')
@@ -628,6 +748,7 @@ async function loadAll() {
   } finally {
     loading = false;
     refresh();
+    if (S.view === 'rating' && S.rView !== 'season') loadPeriod();
   }
 }
 
@@ -647,7 +768,6 @@ function openAuth(mode) {
   $('#authSheet').hidden = false;
   setTimeout(() => $('#authNick').focus(), 50);
 }
-function closeAuth() { $('#authSheet').hidden = true; }
 function setAuthMode(mode) {
   S.authMode = mode;
   const reg = mode === 'reg';
@@ -673,7 +793,7 @@ async function submitAuth(e) {
     S.token = r.token; S.me = { id: r.id, nick: r.nick, is_admin: r.is_admin };
     store.set('token', r.token);
     $('#authPass').value = '';
-    closeAuth();
+    $('#authSheet').hidden = true;
     toast(S.authMode === 'reg' ? 'Готово! Теперь делай прогнозы' : 'Привет, ' + r.nick + '!');
     S.listSig = '';
     await loadAll();
@@ -683,11 +803,14 @@ async function submitAuth(e) {
 }
 async function logout() {
   const t = S.token;
-  S.token = null; S.me = null; S.my = {}; store.set('token', null);
+  S.token = null; S.me = null; S.my = {}; S.myJ = {}; S.myLong = {}; store.set('token', null);
   S.listSig = ''; refresh();
   toast('Ты вышел из аккаунта');
   try { if (t) await API.rpc('logout', { p_token: t }); } catch (e) {}
   loadAll();
+}
+function sessionExpired(msg) {
+  if (/Войди заново/.test(msg)) { S.token = null; S.me = null; store.set('token', null); S.listSig = ''; refresh(); }
 }
 
 /* ===== Шапка ===== */
@@ -697,7 +820,7 @@ function renderHeader() {
   $('#meBtn').hidden = !logged;
   $('#authBanner').hidden = logged || !API.ready;
   if (!logged) return;
-  const rows = rankedBoard(), mine = rows.find(r => r.player_id === S.me.id);
+  const rows = rank(S.board), mine = rows.find(r => r.player_id === S.me.id);
   $('#meNick').textContent = S.me.nick;
   $('#mePts').textContent = mine ? mine.pts : 0;
   $('#meRank').textContent = mine && rows.length > 1 ? mine.rank + '-е место из ' + rows.length : 'очков';
@@ -711,10 +834,15 @@ function renderCompChips() {
     (k === 'all' ? '' : '<i class="dot ' + k + '"></i>') + esc(l) + '</button>').join('');
   $('#segUp').setAttribute('aria-pressed', S.seg === 'up');
   $('#segDone').setAttribute('aria-pressed', S.seg === 'done');
+  const oe = $('#onlyEmpty');
+  oe.hidden = !(S.me && S.seg === 'up');
+  document.querySelector('.row-tools').hidden = S.seg !== 'up' || !S.me;
+  oe.setAttribute('aria-pressed', S.onlyEmpty);
 }
 function visibleMatches(now) {
   const arr = [...S.matches.values()].filter(m => (S.comp === 'all' || m.comp === S.comp) &&
-    (S.seg === 'up' ? phase(m, now) === 'up' : phase(m, now) !== 'up'));
+    (S.seg === 'up' ? phase(m, now) === 'up' : phase(m, now) !== 'up') &&
+    !(S.seg === 'up' && S.onlyEmpty && S.me && validPick(S.my[m.id])));
   arr.sort((a, b) => (S.seg === 'up' ? 1 : -1) * (Date.parse(a.kickoff) - Date.parse(b.kickoff)) || a.id.localeCompare(b.id));
   return arr;
 }
@@ -734,6 +862,8 @@ function cardHTML(m, now) {
       '</div>';
   } else if (ph === 'ft') {
     center = '<div class="result" aria-label="Счёт ' + m.hg + ':' + m.ag + '">' + m.hg + '<span>:</span>' + m.ag + '</div>';
+  } else if (ph === 'live' && m.hg != null && m.ag != null) {
+    center = '<div class="result live" aria-label="Идёт матч, счёт ' + m.hg + ':' + m.ag + '">' + m.hg + '<span>:</span>' + m.ag + '</div>';
   } else {
     center = '<div class="result pending" aria-label="Счёта пока нет">–<span>:</span>–</div>';
   }
@@ -754,10 +884,11 @@ function cardHTML(m, now) {
     }
   }
   return '<article class="m" data-id="' + esc(m.id) + '">' +
-    '<div class="m-head"><span class="tag"><i class="dot ' + esc(m.comp) + '"></i>' + esc(c.short) + (m.round ? ' · ' + esc(m.round) : '') + '</span>' +
-    '<span class="when" data-when></span></div>' +
+    '<div class="m-head"><span class="tag"><i class="dot ' + esc(m.comp) + '"></i>' + esc(c.short) + (m.round ? ' · ' + esc(m.round) : '') +
+    ' <span class="x2" data-x2 hidden>×2</span></span><span class="when" data-when></span></div>' +
     '<div class="m-row"><span class="team h">' + esc(ru(m.home)) + '</span>' + center + '<span class="team a">' + esc(ru(m.away)) + '</span></div>' +
     '<div class="m-foot"><span class="st" data-st></span><span class="pts" data-pts hidden></span></div>' +
+    '<div class="m-tools" data-tools></div>' +
     '<div class="fr" data-fr></div>' + adm + '</article>';
 }
 function renderMatches(force) {
@@ -771,7 +902,7 @@ function renderMatches(force) {
     return;
   }
   const arr = visibleMatches(now);
-  const sig = S.seg + S.comp + '#' + arr.map(m => m.id + ':' + cardSig(m, now)).join(',');
+  const sig = S.seg + S.comp + (S.onlyEmpty ? 'E' : '') + '#' + arr.map(m => m.id + ':' + cardSig(m, now)).join(',');
   if (sig !== S.listSig || force) {
     const a = document.activeElement;
     if (!force && a && a.tagName === 'INPUT' && list.contains(a)) { S.pendingRebuild = true; }
@@ -779,7 +910,9 @@ function renderMatches(force) {
       S.listSig = sig; S.pendingRebuild = false;
       if (!arr.length) {
         list.innerHTML = S.seg === 'up'
-          ? '<div class="empty"><strong>Ближайших матчей нет</strong>Новые туры загружаются автоматически раз в час.</div>'
+          ? (S.onlyEmpty
+            ? '<div class="empty"><strong>Все прогнозы сделаны</strong>На все ближайшие матчи у тебя уже есть прогноз.</div>'
+            : '<div class="empty"><strong>Ближайших матчей нет</strong>Новые туры загружаются автоматически раз в час.</div>')
           : '<div class="empty"><strong>Сыгранных матчей пока нет</strong>Здесь появятся итоговые счета за последние две недели и твои очки.</div>';
       } else {
         let html = '', lastDay = '';
@@ -801,7 +934,7 @@ function renderProgress(now) {
   const up = [...S.matches.values()].filter(m => (S.comp === 'all' || m.comp === S.comp) && phase(m, now) === 'up');
   if (!up.length) { el.textContent = ''; return; }
   const done = up.filter(m => validPick(S.my[m.id])).length;
-  el.innerHTML = 'Прогнозы: <b>' + done + '</b> из <b>' + up.length + '</b> ' + plural(up.length, 'матча', 'матчей', 'матчей');
+  el.innerHTML = 'Прогнозы: <b>' + done + '</b> из <b>' + up.length + '</b>';
 }
 function updateCards(now) {
   now = now || Date.now();
@@ -809,13 +942,16 @@ function updateCards(now) {
   for (const p of S.recent) (recentBy[p.match_id] = recentBy[p.match_id] || []).push(p);
   for (const el of document.querySelectorAll('#matchList .m')) {
     const m = S.matches.get(el.dataset.id); if (!m) continue;
-    const ph = phase(m, now), pick = S.my[m.id], ok = validPick(pick);
+    const ph = phase(m, now), pick = S.my[m.id], ok = validPick(pick), joker = ok && !!S.myJ[m.id];
     const when = el.querySelector('[data-when]');
     when.textContent = ph === 'live' ? 'Идёт' : ph === 'pp' ? 'Перенесён' : fTime.format(new Date(m.kickoff));
     when.classList.toggle('live', ph === 'live');
-    const st = el.querySelector('[data-st]'), pts = el.querySelector('[data-pts]');
+    el.classList.toggle('is-joker', joker);
+    el.querySelector('[data-x2]').hidden = !joker;
+    const st = el.querySelector('[data-st]'), pts = el.querySelector('[data-pts]'), tools = el.querySelector('[data-tools]');
     st.classList.remove('warn');
     pts.hidden = true;
+    let toolsHtml = '';
     if (ph === 'up') {
       const ih = el.querySelector('[data-side=h]'), ia = el.querySelector('[data-side=a]');
       const act = document.activeElement;
@@ -826,15 +962,21 @@ function updateCards(now) {
       else if (S.partial.has(m.id)) { st.textContent = 'Укажи голы обеих команд'; st.classList.add('warn'); }
       else if (ok) st.innerHTML = 'Твой прогноз <b>' + pick[0] + ':' + pick[1] + '</b> · ' + esc(left);
       else st.textContent = 'Сделай прогноз · приём ' + left.replace('через', 'закроется через');
+      if (S.me && ok) toolsHtml = '<button type="button" class="jk" data-act="joker" aria-pressed="' + joker + '">' +
+        (joker ? '×2 Джокер стоит на этом матче' : 'Поставить джокер ×2') + '</button>';
     } else {
       const mine = ok ? 'твой прогноз <b>' + pick[0] + ':' + pick[1] + '</b>' : 'без прогноза';
-      if (ph === 'live') st.innerHTML = 'Матч идёт · ' + mine;
+      if (ph === 'live') {
+        const b = basePts(pick, m.hg, m.ag);
+        st.innerHTML = 'Матч идёт · ' + mine + (b !== null ? ' <span class="prov">· сейчас +' + b * (joker ? 2 : 1) + '</span>' : '');
+      }
       else if (ph === 'wait') st.innerHTML = 'Ждём итоговый счёт · ' + mine;
       else if (ph === 'pp') st.innerHTML = 'Матч перенесён · ' + mine;
       else st.innerHTML = ok ? 'Твой прогноз <b>' + pick[0] + ':' + pick[1] + '</b>' : 'Без прогноза';
-      const s = score(pick, m);
-      if (s !== null) { pts.hidden = false; pts.className = 'pts p' + s; pts.textContent = '+' + s; }
+      const s = score(pick, m, joker);
+      if (s !== null) { pts.hidden = false; pts.className = 'pts p' + Math.min(3, joker ? s / 2 : s); pts.textContent = '+' + s; }
     }
+    tools.innerHTML = toolsHtml;
     const fr = el.querySelector('[data-fr]');
     if (ph === 'up') {
       const cnt = (S.counts[m.id] || 0) - (ok ? 1 : 0);
@@ -842,8 +984,8 @@ function updateCards(now) {
     } else {
       const others = (recentBy[m.id] || []).filter(p => !S.me || p.player_id !== S.me.id);
       fr.innerHTML = others.map(p => {
-        const s = score([p.hg, p.ag], m), nk = nickOf(p.player_id);
-        return '<span class="fp">' + avatar(nk) + esc(nk) + ' <b>' + p.hg + ':' + p.ag + '</b>' + (s !== null ? ' <i>+' + s + '</i>' : '') + '</span>';
+        const s = score([p.hg, p.ag], m, p.joker), nk = nickOf(p.player_id);
+        return '<span class="fp">' + avatar(nk) + esc(nk) + ' <b>' + p.hg + ':' + p.ag + '</b>' + (p.joker ? ' <span class="x2">×2</span>' : '') + (s !== null ? ' <i>+' + s + '</i>' : '') + '</span>';
       }).join('');
     }
   }
@@ -859,7 +1001,7 @@ function onPickInput(e) {
   if (inp === ih && v.length === 1 && ia.value === '') ia.focus();
   const h = ih.value, a = ia.value;
   if (h !== '' && a !== '') { S.my[id] = [parseInt(h, 10), parseInt(a, 10)]; S.partial.delete(id); scheduleSave(id); }
-  else if (h === '' && a === '') { delete S.my[id]; S.partial.delete(id); scheduleSave(id); }
+  else if (h === '' && a === '') { delete S.my[id]; delete S.myJ[id]; S.partial.delete(id); scheduleSave(id); }
   else S.partial.add(id);
   updateCards(); renderProgress(Date.now());
 }
@@ -876,20 +1018,37 @@ async function savePick(id) {
     await API.rpc('save_pick', { p_token: S.token, p_match: id, p_hg: p ? p[0] : null, p_ag: p ? p[1] : null });
     toast(p ? 'Прогноз сохранён' : 'Прогноз удалён');
   } catch (e) {
-    toast(e.message);
-    if (/Войди заново/.test(e.message)) { S.token = null; S.me = null; store.set('token', null); S.listSig = ''; refresh(); }
+    toast(e.message); sessionExpired(e.message);
   } finally {
     S.saving.delete(id);
-    if (S.pendingSave.has(id)) { S.pendingSave.delete(id); savePick(id); }
+    if (S.pendingSave.has(id)) { S.pendingSave.delete(id); await savePick(id); }
   }
 }
 
-/* Кнопки администратора в карточках */
+/* Кнопки в карточках: джокер и админка */
 async function onMatchClick(e) {
   const b = e.target.closest('[data-act]'); if (!b) return;
   if (b.dataset.act === 'retry') { loadAll(); return; }
   const card = b.closest('.m'); if (!card) return;
   const id = card.dataset.id;
+  if (b.dataset.act === 'joker') {
+    b.disabled = true;
+    try {
+      // если прогноз ещё не успел сохраниться — сначала сохраняем его
+      if (S.saveT[id]) { clearTimeout(S.saveT[id]); delete S.saveT[id]; await savePick(id); }
+      const on = await API.rpc('toggle_joker', { p_token: S.token, p_match: id });
+      if (on) {
+        // в базе джокер этой недели снят с других матчей — повторяем это на экране
+        const wk = weekStartUTC(new Date(S.matches.get(id).kickoff)).getTime();
+        for (const k of Object.keys(S.myJ)) { const mm = S.matches.get(k); if (mm && weekStartUTC(new Date(mm.kickoff)).getTime() === wk) delete S.myJ[k]; }
+        S.myJ[id] = true;
+        toast('Джокер поставлен: очки за этот матч ×2');
+      } else { delete S.myJ[id]; toast('Джокер снят'); }
+      updateCards();
+    } catch (err) { toast(err.message); sessionExpired(err.message); }
+    finally { b.disabled = false; }
+    return;
+  }
   if (b.dataset.act === 'openAdm') { S.openAdmin.add(id); renderMatches(true); return; }
   if (b.dataset.act === 'closeAdm') { S.openAdmin.delete(id); renderMatches(true); return; }
   if (b.dataset.act === 'saveRes') {
@@ -909,9 +1068,80 @@ async function onMatchClick(e) {
   }
 }
 
+/* ===== Прогнозы на сезон ===== */
+function teamsFor(comp, extra) {
+  const st = S.standings[comp];
+  const names = new Set((st && Array.isArray(st.rows) ? st.rows : []).map(r => r[1]));
+  for (const x of extra) if (x) names.add(x);
+  return [...names].sort((a, b) => ru(a).localeCompare(ru(b), 'ru'));
+}
+function localInput(iso) {
+  const d = new Date(iso), p = (n) => String(n).padStart(2, '0');
+  return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) + 'T' + p(d.getHours()) + ':' + p(d.getMinutes());
+}
+function renderSeason() {
+  const box = $('#longList');
+  if (!API.ready) { box.innerHTML = '<div class="empty"><strong>Сайт ещё не подключён к базе</strong></div>'; return; }
+  if (!S.loaded) { box.innerHTML = '<div class="empty"><strong>Загружаю…</strong></div>'; return; }
+  if (!S.longQ.length) { box.innerHTML = '<div class="empty"><strong>Вопросов на сезон пока нет</strong>Запусти новую версию скрипта базы.</div>'; return; }
+  const now = Date.now(), admin = S.me && S.me.is_admin;
+  box.innerHTML = S.longQ.map(q => {
+    const closed = Date.parse(q.deadline) <= now, mine = S.myLong[q.id] || '';
+    const answers = S.allLong.filter(a => a.question_id === q.id);
+    const opts = teamsFor(q.comp, [mine, q.answer].concat(answers.map(a => a.answer)));
+    const optHtml = (sel) => opts.map(t => '<option value="' + esc(t) + '"' + (t === sel ? ' selected' : '') + '>' + esc(ru(t)) + '</option>').join('');
+    let body = '<p class="when-line">' + (closed ? 'Приём закрыт ' : 'Приём до ') + esc(fStamp.format(new Date(q.deadline))) + '</p>';
+    if (!closed) {
+      if (S.me) {
+        body += '<div class="field"><label for="lq-' + esc(q.id) + '">Твой ответ</label>' +
+          '<select id="lq-' + esc(q.id) + '" data-long="' + esc(q.id) + '"><option value="">— выбери команду —</option>' + optHtml(mine) + '</select></div>';
+      } else body += '<p class="mine">Войди, чтобы сделать прогноз.</p>';
+    } else {
+      body += '<p class="mine">Твой ответ: <b>' + (mine ? esc(ru(mine)) : 'нет') + '</b>' +
+        (q.answer ? (mine && mine === q.answer ? ' <span class="ok">— верно, +' + q.points + '</span>' : '') : '') + '</p>';
+      if (q.answer) body += '<p class="mine">Правильный ответ: <b>' + esc(ru(q.answer)) + '</b></p>';
+      const others = answers.filter(a => !S.me || a.player_id !== S.me.id);
+      if (others.length) body += '<div class="answers">' + others.map(a => {
+        const nk = nickOf(a.player_id);
+        return '<span class="fp' + (q.answer && a.answer === q.answer ? ' hit' : '') + '">' + avatar(nk) + esc(nk) + ' <b>' + esc(ru(a.answer)) + '</b></span>';
+      }).join('') + '</div>';
+    }
+    if (admin) {
+      body += '<div class="adm" data-ladm="' + esc(q.id) + '">' +
+        '<div class="field"><label for="ld-' + esc(q.id) + '">Приём до</label><input class="input" type="datetime-local" id="ld-' + esc(q.id) + '" value="' + localInput(q.deadline) + '"></div>' +
+        '<div class="field"><label for="lp-' + esc(q.id) + '">Очки</label><input class="input" type="number" min="1" max="100" id="lp-' + esc(q.id) + '" value="' + q.points + '"></div>' +
+        '<div class="field full"><label for="la-' + esc(q.id) + '">Правильный ответ (в конце сезона)</label><select id="la-' + esc(q.id) + '"><option value="">— ещё не известен —</option>' + optHtml(q.answer || '') + '</select></div>' +
+        '<button type="button" class="btn full" data-lsave="' + esc(q.id) + '">Сохранить настройки</button></div>';
+    }
+    return '<div class="lq"><div class="lq-head"><h3><i class="dot ' + esc(q.comp || '') + '"></i>' + esc(q.title) + '</h3><span class="pts p3">+' + q.points + '</span></div>' + body + '</div>';
+  }).join('');
+}
+async function onLongChange(e) {
+  const sel = e.target.closest('[data-long]'); if (!sel) return;
+  sel.disabled = true;
+  try {
+    await API.rpc('save_long_pick', { p_token: S.token, p_question: sel.dataset.long, p_answer: sel.value });
+    S.myLong[sel.dataset.long] = sel.value;
+    toast(sel.value ? 'Ответ сохранён' : 'Ответ удалён');
+  } catch (err) { toast(err.message); sessionExpired(err.message); }
+  finally { sel.disabled = false; }
+}
+async function onLongClick(e) {
+  const b = e.target.closest('[data-lsave]'); if (!b) return;
+  const id = b.dataset.lsave;
+  const d = $('#ld-' + id).value, p = parseInt($('#lp-' + id).value, 10), a = $('#la-' + id).value;
+  const dl = d ? new Date(d) : null;
+  if (!dl || isNaN(dl)) { toast('Укажи дату окончания приёма'); return; }
+  b.disabled = true;
+  try {
+    await API.rpc('admin_set_long', { p_token: S.token, p_question: id, p_deadline: dl.toISOString(), p_points: isNaN(p) ? null : p, p_answer: a });
+    toast('Сохранено'); loadAll();
+  } catch (err) { toast(err.message); }
+  finally { b.disabled = false; }
+}
+
 /* ===== Таблицы ===== */
 function computedRows(st, results) {
-  // База таблицы + результаты, внесённые после даты base_until
   // Названия приводим к русским, чтобы «Зенит» из таблицы и «Zenit» из результатов были одной командой
   const map = new Map();
   st.rows.forEach((r, i) => map.set(ru(r[1]), { team: ru(r[1]), p: r[2], w: r[3], d: r[4], l: r[5], pts: r[6], o: i }));
@@ -951,31 +1181,142 @@ function renderTables() {
 }
 
 /* ===== Рейтинг ===== */
+function periodRange() {
+  const now = new Date();
+  if (S.rView === 'week') {
+    const from = weekStartUTC(now, S.rOff), to = new Date(from.getTime() + 7 * 864e5);
+    return { from, to, label: fShortUTC.format(from) + ' – ' + fShortUTC.format(new Date(to.getTime() - 864e5)) };
+  }
+  const from = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + S.rOff, 1));
+  const to = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + S.rOff + 1, 1));
+  return { from, to, label: cap(fMonthUTC.format(from)) + ' ' + from.getUTCFullYear() };
+}
+let periodReq = 0;
+async function loadPeriod() {
+  if (!API.ready || S.rView === 'season') return;
+  const r = periodRange(), my = ++periodReq;
+  try {
+    const rows = await API.rpc('leaderboard_period', { p_from: r.from.toISOString(), p_to: r.to.toISOString() });
+    if (my !== periodReq) return;
+    S.periodBoard = rows || []; S.periodErr = '';
+  } catch (e) { if (my === periodReq) { S.periodBoard = null; S.periodErr = e.message; } }
+  if (S.view === 'rating') renderRating();
+}
 function renderRating() {
   const box = $('#board');
+  for (const [id, v] of [['#rWeek', 'week'], ['#rMonth', 'month'], ['#rSeason', 'season']]) $(id).setAttribute('aria-pressed', S.rView === v);
+  const pn = $('#pnav'); pn.hidden = S.rView === 'season';
+  if (S.rView !== 'season') { $('#pLabel').textContent = periodRange().label; $('#pNext').disabled = S.rOff >= 0; }
   $('#accountPanel').hidden = !S.me;
   $('#adminPanel').hidden = !(S.me && S.me.is_admin);
   if (S.me) $('#accNick').textContent = S.me.nick;
-  if (!API.ready) { box.innerHTML = '<div class="empty"><strong>Сайт ещё не подключён к базе</strong></div>'; return; }
-  if (!S.loaded) { box.innerHTML = '<div class="empty"><strong>Загружаю рейтинг…</strong></div>'; return; }
-  const rows = rankedBoard();
-  if (!rows.length) {
-    box.innerHTML = '<div class="empty"><strong>Пока никто не играет</strong>Зарегистрируйся и сделай первый прогноз.' +
-      (S.me ? '' : '<br><button type="button" class="btn primary" data-open-auth>Войти</button>') + '</div>';
-  } else {
-    box.innerHTML = '<div class="board">' + rows.map(r =>
-      '<div class="row' + (S.me && r.player_id === S.me.id ? ' me' : '') + '"><span class="rk">' + r.rank + '</span>' + avatar(r.nick) +
-      '<span class="nm">' + esc(r.nick) + (S.me && r.player_id === S.me.id ? ' (ты)' : '') +
-      '<span class="sub">точных: ' + r.exact + ' · прогнозов: ' + r.total + '</span></span>' +
-      '<span class="tot">' + r.pts + '</span></div>').join('') + '</div>';
-  }
   if (S.me && S.me.is_admin) {
     const s = S.sync || {};
     $('#syncInfo').textContent = s.last_sync
-      ? 'Последнее автообновление: ' + fStamp.format(new Date(s.last_sync)) + '. Следующее — в течение часа.' + (s.requested ? ' Запрошено обновление, данные придут в течение 10 минут.' : '')
+      ? 'Последнее полное обновление: ' + fStamp.format(new Date(s.last_sync)) + '. Во время матчей счёт обновляется каждые 5 минут.' + (s.requested ? ' Запрошено обновление, данные придут в течение 5 минут.' : '')
       : 'Автообновление ещё не запускалось.';
     const log = $('#syncLog'); log.hidden = !s.log; log.textContent = s.log || '';
   }
+  if (!API.ready) { box.innerHTML = '<div class="empty"><strong>Сайт ещё не подключён к базе</strong></div>'; return; }
+  if (!S.loaded) { box.innerHTML = '<div class="empty"><strong>Загружаю рейтинг…</strong></div>'; return; }
+  let rows;
+  if (S.rView === 'season') rows = S.board;
+  else {
+    if (S.periodErr) { box.innerHTML = '<div class="empty"><strong>Не удалось загрузить рейтинг</strong>' + esc(S.periodErr) + '</div>'; return; }
+    if (!S.periodBoard) { box.innerHTML = '<div class="empty"><strong>Загружаю рейтинг…</strong></div>'; return; }
+    rows = S.periodBoard;
+  }
+  rows = rank(rows);
+  if (!rows.length) {
+    box.innerHTML = '<div class="empty"><strong>Пока никто не играет</strong>Зарегистрируйся и сделай первый прогноз.' +
+      (S.me ? '' : '<br><button type="button" class="btn primary" data-open-auth>Войти</button>') + '</div>';
+    return;
+  }
+  const leadLabel = S.rView === 'season' ? 'лидер сезона'
+    : S.rView === 'week' ? (S.rOff < 0 ? 'лучший игрок недели' : 'лидирует на неделе')
+    : (S.rOff < 0 ? 'лучший игрок месяца' : 'лидирует в месяце');
+  const anyPts = rows.some(r => r.pts > 0);
+  box.innerHTML = '<div class="board">' + rows.map(r => {
+    const me = S.me && r.player_id === S.me.id;
+    const sub = S.rView === 'season'
+      ? 'точных: ' + r.exact + ' · прогнозов: ' + r.total + (r.long_pts ? ' · сезон: +' + r.long_pts : '')
+      : (r.played ? 'матчей: ' + r.played + ' · точных: ' + r.exact : 'нет сыгранных прогнозов');
+    return '<button type="button" class="row' + (me ? ' me' : '') + '" data-player="' + esc(r.player_id) + '" data-nick="' + esc(r.nick) + '">' +
+      '<span class="rk">' + r.rank + '</span>' + avatar(r.nick) +
+      '<span class="nm">' + esc(r.nick) + (me ? ' (ты)' : '') + '<span class="sub">' + esc(sub) + '</span>' +
+      (anyPts && r.rank === 1 && r.pts > 0 ? '<span class="lead">' + esc(leadLabel) + '</span>' : '') + '</span>' +
+      '<span class="tot">' + r.pts + '</span></button>';
+  }).join('') + '</div>';
+}
+
+/* ===== Статистика игрока ===== */
+async function openStats(id, nick) {
+  $('#statsTitle').textContent = nick;
+  $('#statsBody').innerHTML = '<div class="empty"><strong>Считаю статистику…</strong></div>';
+  $('#statsSheet').hidden = false;
+  try {
+    const h = await API.rpc('player_history', { p_player: id });
+    renderStats(id, h || []);
+  } catch (e) {
+    $('#statsBody').innerHTML = '<div class="empty"><strong>Не удалось загрузить</strong>' + esc(e.message) + '</div>';
+  }
+}
+function renderStats(id, h) {
+  const body = $('#statsBody');
+  const brd = rank(S.board).find(r => r.player_id === id);
+  if (!h.length) {
+    body.innerHTML = '<div class="empty"><strong>Пока нечего считать</strong>Статистика появится после первых сыгранных матчей с прогнозами.</div>';
+    return;
+  }
+  const base = (r) => r.joker ? r.pts / 2 : r.pts;
+  const played = h.length, pts = h.reduce((s, r) => s + r.pts, 0);
+  const exact = h.filter(r => base(r) === 3).length, diff = h.filter(r => base(r) >= 2).length, outcome = h.filter(r => base(r) >= 1).length;
+  const asc = h.slice().sort((a, b) => Date.parse(a.kickoff) - Date.parse(b.kickoff));
+  let best = 0, cur = 0;
+  for (const r of asc) { cur = base(r) >= 1 ? cur + 1 : 0; best = Math.max(best, cur); }
+  const jk = h.filter(r => r.joker), jkGain = jk.reduce((s, r) => s + r.pts / 2, 0);
+  const pct = (x) => Math.round(x / played * 100) + '%';
+  // По турнирам
+  const byComp = {};
+  for (const r of h) { const c = byComp[r.comp] || (byComp[r.comp] = { pts: 0, n: 0 }); c.pts += r.pts; c.n++; }
+  // Очки по неделям: последние 8 недель
+  const now = new Date(), weeks = [];
+  for (let i = -7; i <= 0; i++) weeks.push({ from: weekStartUTC(now, i), pts: 0 });
+  for (const r of h) {
+    const w = weekStartUTC(new Date(r.kickoff)).getTime();
+    const slot = weeks.find(x => x.from.getTime() === w); if (slot) slot.pts += r.pts;
+  }
+  const maxW = Math.max(3, ...weeks.map(w => w.pts));
+  const W = 320, H = 130, top = 16, bottom = 22, bw = 26, gap = (W - bw * 8) / 8;
+  let svg = '<svg class="bars" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Очки по неделям за последние 8 недель">' +
+    '<line x1="0" y1="' + (H - bottom) + '" x2="' + W + '" y2="' + (H - bottom) + '"/>';
+  weeks.forEach((w, i) => {
+    const x = gap / 2 + i * (bw + gap), hgt = (H - top - bottom) * w.pts / maxW, y = H - bottom - hgt;
+    svg += '<rect class="bar' + (i === 7 ? ' now' : '') + '" x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + bw + '" height="' + Math.max(hgt, w.pts ? 2 : 0).toFixed(1) + '" rx="4"/>' +
+      '<text class="val" x="' + (x + bw / 2).toFixed(1) + '" y="' + (y - 4).toFixed(1) + '" text-anchor="middle">' + w.pts + '</text>' +
+      '<text x="' + (x + bw / 2).toFixed(1) + '" y="' + (H - 6) + '" text-anchor="middle">' + esc(fShortUTC.format(w.from).replace('.', '')) + '</text>';
+  });
+  svg += '</svg>';
+  const last = h.slice(0, 10);
+  body.innerHTML =
+    '<div class="stat-grid">' +
+      '<div class="stat"><b>' + (brd ? brd.pts : pts) + '</b><span>очков в сезоне' + (brd && brd.long_pts ? ', из них ' + brd.long_pts + ' за сезонные' : '') + '</span></div>' +
+      '<div class="stat"><b>' + (brd ? brd.rank : '—') + '</b><span>место в общем рейтинге</span></div>' +
+      '<div class="stat"><b>' + pct(outcome) + '</b><span>угадан исход (' + outcome + ' из ' + played + ')</span></div>' +
+      '<div class="stat"><b>' + exact + '</b><span>точных счетов (' + pct(exact) + ')</span></div>' +
+      '<div class="stat"><b>' + pct(diff) + '</b><span>угадана разница мячей</span></div>' +
+      '<div class="stat"><b>' + best + '</b><span>лучшая серия матчей с очками' + (cur ? ', сейчас ' + cur : '') + '</span></div>' +
+      '<div class="stat"><b>' + (played ? (pts / played).toFixed(2).replace('.', ',') : '0') + '</b><span>очков в среднем за матч</span></div>' +
+      '<div class="stat"><b>+' + jkGain + '</b><span>принёс джокер (' + jk.length + ' ' + plural(jk.length, 'раз', 'раза', 'раз') + ')</span></div>' +
+    '</div>' +
+    '<h3 class="sec">Очки по неделям</h3>' + svg +
+    '<h3 class="sec">По турнирам</h3><div>' + ORDER.filter(c => byComp[c]).map(c =>
+      '<div class="comp-line"><span><i class="dot ' + c + '"></i>' + esc(COMPS[c].name) + '</span><span>' + byComp[c].pts + ' ' + plural(byComp[c].pts, 'очко', 'очка', 'очков') + ' за ' + byComp[c].n + ' ' + plural(byComp[c].n, 'матч', 'матча', 'матчей') + '</span></div>').join('') + '</div>' +
+    '<h3 class="sec">Последние матчи</h3><div class="hist">' + last.map(r =>
+      '<div><span class="mt">' + esc(ru(r.home)) + ' — ' + esc(ru(r.away)) + '<small>' + esc(fShort.format(new Date(r.kickoff))) + ' · ' + esc(COMPS[r.comp] ? COMPS[r.comp].short : r.comp) + '</small></span>' +
+      '<span class="sc">' + r.phg + ':' + r.pag + ' / ' + r.hg + ':' + r.ag + (r.joker ? ' <span class="x2">×2</span>' : '') + '</span>' +
+      '<span class="pts p' + Math.min(3, base(r)) + '">+' + r.pts + '</span></div>').join('') + '</div>' +
+    '<p class="small">В списке: прогноз / итоговый счёт.</p>';
 }
 
 /* ===== Где смотреть ===== */
@@ -1006,21 +1347,29 @@ function renderWatch() {
 }
 
 /* ===== Навигация и общие ===== */
-const VIEWS = ['matches', 'tables', 'rating', 'watch'];
-function setView(v, keepScroll) {
+const VIEWS = ['matches', 'season', 'tables', 'rating', 'watch'];
+function setView(v, keepScroll, skipLoad) {
   if (!VIEWS.includes(v)) v = 'matches';
   S.view = v; store.set('view', v);
   for (const k of VIEWS) {
     $('#v-' + k).hidden = k !== v;
     const t = $('#tab-' + k); if (k === v) t.setAttribute('aria-current', 'page'); else t.removeAttribute('aria-current');
   }
+  if (v === 'season') renderSeason();
   if (v === 'tables') renderTables();
-  if (v === 'rating') renderRating();
+  if (v === 'rating') { renderRating(); loadPeriod(); }
   if (v === 'watch') renderWatch();
   if (!keepScroll) window.scrollTo(0, 0);
+  // при каждом переходе на другую вкладку подтягиваем свежие данные: прогнозы друзей, очки, счёт
+  if (!skipLoad) loadAll();
 }
 function refresh() {
-  renderHeader(); renderMatches();
+  renderHeader(); renderCompChips(); renderMatches();
+  if (S.view === 'season') {
+    // не перерисовываем, пока человек выбирает команду в списке
+    const a = document.activeElement;
+    if (!(a && a.tagName === 'SELECT' && $('#longList').contains(a)) && !(a && a.tagName === 'INPUT' && $('#longList').contains(a))) renderSeason();
+  }
   if (S.view === 'tables') renderTables();
   if (S.view === 'rating') renderRating();
 }
@@ -1034,6 +1383,7 @@ function toast(msg) {
 document.querySelector('.tabbar').addEventListener('click', e => { const b = e.target.closest('[data-view]'); if (b) setView(b.dataset.view); });
 $('#compChips').addEventListener('click', e => { const b = e.target.closest('[data-comp]'); if (!b) return; S.comp = b.dataset.comp; store.set('comp', S.comp); renderCompChips(); renderMatches(true); });
 document.querySelector('#v-matches .seg').addEventListener('click', e => { const b = e.target.closest('[data-seg]'); if (!b) return; S.seg = b.dataset.seg; renderCompChips(); renderMatches(true); });
+$('#onlyEmpty').addEventListener('click', () => { S.onlyEmpty = !S.onlyEmpty; renderCompChips(); renderMatches(true); });
 $('#tblChips').addEventListener('click', e => { const b = e.target.closest('[data-tcomp]'); if (!b) return; S.tcomp = b.dataset.tcomp; store.set('tcomp', S.tcomp); renderTables(); });
 $('#country').addEventListener('change', e => { S.country = e.target.value; store.set('country', S.country); renderWatch(); });
 const list = $('#matchList');
@@ -1046,12 +1396,24 @@ list.addEventListener('focusout', e => {
   setTimeout(() => renderMatches(), 0);
 });
 list.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.matches('.g')) e.target.blur(); });
-document.addEventListener('click', e => { if (e.target.closest('[data-open-auth]')) openAuth('login'); });
+$('#longList').addEventListener('change', onLongChange);
+$('#longList').addEventListener('click', onLongClick);
+document.querySelector('#v-rating .seg').addEventListener('click', e => {
+  const b = e.target.closest('[data-rview]'); if (!b) return;
+  S.rView = b.dataset.rview; S.rOff = 0; S.periodBoard = null; S.periodErr = '';
+  renderRating(); loadPeriod();
+});
+$('#pPrev').addEventListener('click', () => { S.rOff--; S.periodBoard = null; renderRating(); loadPeriod(); });
+$('#pNext').addEventListener('click', () => { if (S.rOff < 0) { S.rOff++; S.periodBoard = null; renderRating(); loadPeriod(); } });
+$('#board').addEventListener('click', e => { const b = e.target.closest('[data-player]'); if (b) openStats(b.dataset.player, b.dataset.nick); });
+document.addEventListener('click', e => {
+  if (e.target.closest('[data-open-auth]')) openAuth('login');
+  const close = e.target.closest('[data-close]'); if (close) close.closest('.sheet').hidden = true;
+  if (e.target.classList && e.target.classList.contains('sheet')) e.target.hidden = true;
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.sheet').forEach(s => { s.hidden = true; }); });
 $('#loginBtn').addEventListener('click', () => openAuth('login'));
-$('#meBtn').addEventListener('click', () => setView('rating'));
-$('#authClose').addEventListener('click', closeAuth);
-$('#authSheet').addEventListener('click', e => { if (e.target === $('#authSheet')) closeAuth(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#authSheet').hidden) closeAuth(); });
+$('#meBtn').addEventListener('click', () => { if (S.me) openStats(S.me.id, S.me.nick); });
 $('#modeLogin').addEventListener('click', () => setAuthMode('login'));
 $('#modeReg').addEventListener('click', () => setAuthMode('reg'));
 $('#authForm').addEventListener('submit', submitAuth);
@@ -1063,7 +1425,7 @@ $('#copyLink').addEventListener('click', async () => {
 });
 $('#syncBtn').addEventListener('click', async (e) => {
   const b = e.currentTarget; b.disabled = true;
-  try { await API.rpc('admin_request_sync', { p_token: S.token }); toast('Обновление запрошено, данные придут в течение 10 минут'); loadAll(); }
+  try { await API.rpc('admin_request_sync', { p_token: S.token }); toast('Обновление запрошено, данные придут в течение 5 минут'); loadAll(); }
   catch (err) { toast(err.message); }
   finally { b.disabled = false; }
 });
@@ -1093,9 +1455,8 @@ document.addEventListener('visibilitychange', () => { if (!document.hidden) load
     : /^Asia\/(Almaty|Qostanay|Aqtobe|Aqtau|Atyrau|Oral|Qyzylorda)$/.test(tz) ? 'kz'
     : (TZ_COUNTRY[tz] || 'other');
   S.country = store.get('country', guess); if (!WATCH[S.country]) S.country = 'other';
-  renderCompChips();
   const h = (location.hash || '').replace('#', '');
-  setView(VIEWS.includes(h) ? h : store.get('view', 'matches'), true);
+  setView(VIEWS.includes(h) ? h : store.get('view', 'matches'), true, true);
   refresh();
   await restoreSession();
   refresh();
